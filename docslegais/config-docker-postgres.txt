@@ -1,0 +1,47 @@
+
+---------------------------------------------------------------------------------------------------------
+POSTGRES
+---------------------------------------------------------------------------------------------------------
+
+docker pull postgres
+
+docker volume create pgdata
+
+docker run --name postgres -e POSTGRES_PASSWORD=12345 -v $(pwd)/sql:/tmp -v pgdata:/var/lib/postgresql/data -d postgres
+
+docker run -it -v /tmp:/tmp --rm postgres psql -d apis3produto -h 172.17.0.2 -U gopher -f /tmp/table.sql
+
+docker run -it -v /tmp:/tmp --rm postgres pg_dump -Fc -Z9 -d apis3produto -h 172.17.0.2 -U gopher -f /tmp/table2.sql
+
+docker run -it --rm postgres psql -h 172.17.0.2 -U postgres -c "create database apis3produto -O gopher -E UTF-8"
+
+docker exec -it postgres bash
+
+createuser gopher -U postgres
+
+createdb apidevopsdaysbh -U postgres -O gopher -E UTF-8 -T template0
+
+psql -d template1 -U postgres
+
+> CREATE EXTENSION pgcrypto;
+
+> alter user gopher password '12345'
+
+> CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+> drop table public.login;
+
+
+--------------------------------------------------------------------------------------------------------
+PGADMIN
+---------------------------------------------------------------------------------------------------------
+docker pull dpage/pgadmin4
+
+docker run -p 9000:80 \ 
+        -e "PGADMIN_DEFAULT_EMAIL=jeff.otoni@s3wf.com.br" \
+        -e "PGADMIN_DEFAULT_PASSWORD=1234" \
+        -d dpage/pgadmin4
+
+
+http://localhost:9000/login?next=%2F
+---------------------------------------------------------------------------------------------------------

@@ -1,0 +1,4194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="go, golang, workshop, jeffotoni golang, lambda">
+    <meta name="author" content="jeffotoni">
+    <title>Go Workshop 2.0</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/s3css.css" rel="stylesheet">
+    <link href="plugins/prism/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="css/source-sans-pro.min.css" rel="stylesheet">
+    <link href="css/inconsolata.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<header class="navbar navbar-bright navbar-fixed-top main-header" role="banner">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+				<div class="logo">
+					<a href="/">
+						<span class="title-logo"><strong>Go</strong> 
+						Workshop 2.0 Gophers é nota 1000</span>
+					</a>
+				</div>
+				
+				<div class="logo-right hidden-xs">
+					<img src="img/gopher.png" alt="" />
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Begin Body -->
+	<div class="container-fluid">
+		<div class="col-xs-12">
+			<div class="sidebar" id="leftCol">
+				<ul class="nav nav-stacked" id="sidebar">
+
+					<!--- WORKSHOP 2.0 BOOTCAMP --->
+					<li>
+						<a href="#sec17">Workshop 2.0 BootCamp</a>
+					</li>
+
+					<!--- PREVIA GO --->
+
+					<li>
+						<a href="#sec18">Pr&eacute;via Go</a>
+					</li>
+
+					<!--- OVERVIEW --->
+
+					<li>
+						<a href="#sec19">Overview</a>
+					</li>
+
+					<!--- INTRODUCAO CONTEUDOS --->
+
+					<li>
+						<a href="#sec20">Introdu&ccedil;&atilde;o conte&uacute;dos</a>
+					</li>
+
+					<!--- FUNDAMENTOS DA LINGUAGEM --->
+
+					<li>
+						<a href="#sec21">Fundamentos da Linguagem</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec21_1">Compilada e est&aacute;tica</a></li>
+							<li class=""><a href="#sec21_2">Gc (Garbage Collector)</a></li>
+							<li class=""><a href="#sec21_3">Paradigma Concorrente</a></li>
+							<li class=""><a href="#sec21_4">Tipagem est&aacute;tica</a></li>
+							<li class=""><a href="#sec21_5">Sem&acirc;ntica &eacute; clara</a></li>
+							<li class=""><a href="#sec21_6">Sintaxe &eacute; limpa</a></li>
+							<li class=""><a href="#sec21_7">&Eacute; de uso Geral</a></li>
+							<li class=""><a href="#sec21_8">Plataformas: Windows, Linux, Mac e FreeBSD</a></li>
+						</ul>
+					</li>
+
+					<!--- INSTALACAO --->
+
+					<li>
+						<a href="#sec22">Instala&ccedil;&atilde;o</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec22_1">Introdu&ccedil;&atilde;o &agrave; Instala&ccedil;&atilde;o</a></li>
+							<li class=""><a href="#sec22_2">Instala&ccedil;&atilde;o</a></li>
+							<li class=""><a href="#sec22_3">Linux</a></li>
+							<li class=""><a href="#sec22_4">$GOPATH</a></li>
+							<li class=""><a href="#sec22_5">Teste nossa instala&ccedil;&atilde;o</a></li>
+							<li class=""><a href="#sec22_6">Workspace</a></li>
+							<li class=""><a href="#sec22_7">Fora do $GOPATH</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="#sec25">Instala&ccedil;&atilde;o Docker</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec25_1">Instala&ccedil;&atilde;o Docker para Golang</a></li>
+							<li class=""><a href="#sec25_2">Compile seu aplicativo dentro do cont&ecirc;iner Docker</a></li>
+							<li class=""><a href="#sec25_3">Fa&ccedil;a a compila&ccedil;&atilde;o cruzada do seu aplicativo dentro do contêiner do Docker</a></li>
+						</ul>
+					</li>
+
+					<!--- INTRODUCAO GOLANG --->
+
+					<li>
+						<a href="#sec24">Introdu&ccedil;&atilde;o Golang</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec24_1">Linguagem Golang</a></li>
+							<li class=""><a href="#sec24_2">Palavras-chave</a></li>
+							<li class=""><a href="#sec24_3">Operadores e Pontua&ccedil;&atilde;o</a></li>
+							<li class=""><a href="#sec24_4">Println / Print</a></li>
+							<li class=""><a href="#sec24_5">Bufio NewWriter</a></li>
+							<li class=""><a href="#sec24_6">Func Main</a></li>
+						</ul>
+					</li>
+
+					<!--- COMANDOS GO --->
+
+					<li>
+						<a href="#sec23">Comandos Go</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec23_1">Introdu&ccedil;&atilde;o Comandos Go</a></li>
+							<li class=""><a href="#sec23_2">Go Run</a></li>
+							<li class=""><a href="#sec23_3">Go Build</a></li>
+							<li class=""><a href="#sec23_4">Go Install</a></li>
+							<li class=""><a href="#sec23_5">Go Get</a></li>
+							<li class=""><a href="#sec23_6">Go Mod</a></li>
+							<li class=""><a href="#sec23_7">Go Mod Init</a></li>
+							<li class=""><a href="#sec23_8">Go Mod Vendor</a></li>
+							<li class=""><a href="#sec23_9">GO111MODULE</a></li>
+							<li class=""><a href="#sec23_10">Go Test</a></li>
+						</ul>
+					</li>
+
+					<!--- Json / Marsha, Unmarshal + structs --->
+
+					<li>
+						<a href="#sec26">Json / Marsha, Unmarshal + structs</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec26_1">Json</a></li>
+							<li class=""><a href="#sec26_2">Introdução</a></li>
+							<li class=""><a href="#sec26_3">Json marechal codificar</a></li>
+							<li class=""><a href="#sec26_4">Json MarshalIndent</a></li>
+							<li class=""><a href="#sec26_5">Opção Omitempty</a></li>
+							<li class=""><a href="#sec26_6">Json NewDecoder</a></li>
+							<li class=""><a href="#sec26_7">Interface vazia</a></li>
+						</ul>
+					</li>
+
+					<!--- CONSTRUINDO APIS COM NET/HTTP --->
+
+					<li>
+						<a href="#sec28">Construindo APIs com net/http</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec28_1">Introdu&ccedil;&atilde;o http</a></li>
+							<li class=""><a href="#sec28_2">Type Handler</a></li>
+							<li class=""><a href="#sec28_3">Type HandlerFunc</a></li>
+							<li class=""><a href="#sec28_4">Func http Handlefunc</a></li>
+							<li class=""><a href="#sec28_5">Func http Handle</a></li>
+							<li class=""><a href="#sec28_6">Func http Error</a></li>
+							<li class=""><a href="#sec28_7">Constants Common HTTP Methods</a></li>
+							<li class=""><a href="#sec28_8">Type ServeMux</a></li>
+							<li class=""><a href="#sec28_9">Type NewServeMux</a></li>
+							<li class=""><a href="#sec28_10">Func ServeMux HandleFunc</a></li>
+							<li class=""><a href="#sec28_11">Type ServeMux Handle</a></li>
+							<li class=""><a href="#sec28_12">Func ListenAndServe</a></li>
+							<li class=""><a href="#sec28_13">Func ListenAndServeTLS</a></li>
+							<li class=""><a href="#sec28_14">Other Muxes</a></li>
+							<li class=""><a href="#sec28_15">Testing Http endpoints</a></li>
+							<li class=""><a href="#sec28_16">Http Shutdown Gracefully</a></li>
+							<li class=""><a href="#sec28_17">Middleware</a></li>
+							<li class=""><a href="#sec28_18">http DetectContentType</a></li>
+							<li class=""><a href="#sec28_19">http DetectContentType</a></li>
+						</ul>
+					</li>
+
+					<!--- NET/HTTP CLIENT --->
+
+					<li>
+						<a href="#sec29">net/http Client</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec29_20">Introdução</a></li>
+							<li class=""><a href="#sec29_21">http.Transport</a></li>
+							<li class=""><a href="#sec29_22">http.Client</a></li>
+							<li class=""><a href="#sec29_23">http.Get</a></li>
+							<li class=""><a href="#sec29_24">http.Post</a></li>
+							<li class=""><a href="#sec29_25">http.NewRequest</a></li>
+							<li class=""><a href="#sec29_26">Context.WithCancel</a></li>
+						</ul>
+					</li>
+
+					<!--- NET/HTTP SERVER PAGES --->
+
+					<li>
+						<a href="#sec30">net/http Server Pages</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec30_27">Introdução</a></li>
+							<li class=""><a href="#sec30_28">http.FileServer</a></li>
+							<li class=""><a href="#sec30_29">http.NotFound</a></li>
+							<li class=""><a href="#sec30_30">Disable http.FileServer</a></li>
+							<li class=""><a href="#sec30_31">http.Dir</a></li>
+							<li class=""><a href="#sec30_32">http.StripPrefix</a></li>
+						</ul>
+					</li>
+
+					<!--- NET/HTTP RPC --->
+
+					<li>
+						<a href="#sec31">net/http RPC</a>
+					</li>
+
+					<!--- CONFIG DOCKER POSTGRES --->
+
+					<li>
+						<a href="#sec27">Configuração Docker Postgres</a>
+
+						<ul class="nav">
+							<li class=""><a href="#sec27_1">Postgres</a></li>
+							<li class=""><a href="#sec27_2">PgAdmin</a></li>
+						</ul>
+					</li>
+
+
+				</ul>
+	  		</div>
+
+	  		<div class="mainContent" id="mainCol">
+
+	  			<br />
+
+	  			<div id="sec17">
+
+	  				<h2>Workshop 2.0 BootCamp</h2>
+
+	  				<p>Material por 8 horas Imers&atilde;o Pr&aacute;tica com Golang Este &eacute; um material em Golang que ser&aacute; apresentado "cara a cara" em uma oficina "de m&atilde;os dadas" que ser&aacute; realizada em 8 horas.</p>
+
+	  			</div>
+
+  				<hr />
+	  				
+	  			<div id="sec18">
+
+	  				<h2>Pr&eacute;via Go</h2>
+
+	  				<p>Todo o conteúdo visa o nível b&aacute;sico do aluno, muitos exemplos pr&aacute;ticos foram feitos com detalhes riqueza para tornar a vida mais f&aacute;cil do que est&aacute; iniciando. Se você sabe pouco e quase nada de programa&ccedil;&atilde;o n&atilde;o ser&aacute; problema todo manual foi feito para nivelar come&ccedil;ando a avan&ccedil;ado. Todas as dificuldades que tive quando comecei a tentar contemplar esse material. Vamos tentar melhorar o material o tempo todo para que possamos ter uma referência quando se trata de ir.</p>
+
+	  				<p>Espero que todos gostem e possam servir de base para aprender e ajudar v&aacute;rios Gophers possíveis.</p>
+
+	  				<p>O conteúdo e as referências usadas s&atilde;o do <a href="https://golang.org" target="_blank">Site Oficial de Golang</a> e do material que est&aacute; sendo desenvolvido, que &eacute; uma compila&ccedil;&atilde;o de toda a linguagem de Golang e pode ser conferida aqui em <a href="https://github.com/jeffotoni/gocompilation" target="_blank">jeffotoni / Compilation</a>.</p>
+
+	  				<p>Algumas apresenta&ccedil;ões que fiz podem ser vistas aqui <a href="https://speakerdeck.com/jeffotoni" target="_blank">Apresenta&ccedil;ões</a>.</p>
+
+	  				<p>H&aacute; milhares de referências hoje em rela&ccedil;&atilde;o a Golang, vamos come&ccedil;ar no come&ccedil;o e n&atilde;o poderíamos parar de falar sobre a <a href="https://tour.golang.org/" target="_blank">Golang Tour</a>. Bem, esse site aqui <a href="https://play.golang.org/p/ayud1GTDJ0G" target="_blank">Play Golang</a> ou <a href="https://goplay.space/#ayud1GTDJ0G" target="_blank">Play no Go Space</a>, podemos rodar o Golang online.</p>
+
+	  				<p>Temos um link muito interessante que pudemos pesquisar por pacotes escritos em Golang. Confira este link: <a href="https://godoc.org/" target="_blank">Go Doc</a></p>
+
+	  				<p>N&oacute;s temos este link que nos apresenta como um manual todas as bibliotecas desenvolvidas no Golang <a href="https://devdocs.io/go/" target="_blank">Dev Docs</a></p>
+
+	  				<p>Aqui encontramos um incrível go, h&aacute; v&aacute;rias listas como &eacute;, e às vezes &eacute; legal verificar algumas bibliotecas para nos ajudar com alguns projetos. <a href="https://awesome-go.com/" target="_blank">awesome-go</a></p>
+
+	  				<p>Logo abaixo alguns canais que participo e posso me encontrar online.</p>
+
+	  				<p><strong>Telegram:</strong></p>
+					<p> - <a href="https://t.me/go_br">gobr</a></p>
+					<p> - <a href="https://t.me/go_bh">gobh</a></p>
+	  			</div>
+
+  				<hr />
+
+  				<div id="sec19">
+
+	  				<h2>Overview</h2>
+
+	  				<p>Go &eacute; uma linguagem poderosa quando se trata de competi&ccedil;&atilde;o e alto desempenho, com uma arquitetura limpa e eficiente. Ela cresce ano ap&oacute;s ano e todos os dias as comunidades crescem ainda mais.</p>
+
+	  				<p>Alguns paradigmas foram quebrados para torn&aacute;-lo uma linguagem de alto desempenho, onde a competi&ccedil;&atilde;o &eacute; um dos seus pontos fortes. O Go facilita a cria&ccedil;&atilde;o de programas que aproveitam ao m&aacute;ximo as m&aacute;quinas multicore e em rede, enquanto o novo sistema de tipos permite que você crie programas flexíveis e modulares.</p>
+
+	  				<p>É uma linguagem r&aacute;pida e estaticamente compilada que se parece com uma linguagem interpretada dinamicamente. Este recurso Golang se torna uma linguagem única como o assunto &eacute; web.</p>
+
+	  				<p>Go &eacute; uma linguagem de programa&ccedil;&atilde;o compilada, competitiva, forte e estaticamente tipada. É uma linguagem de "Uso Geral" que pode ser usada para resolver v&aacute;rios problemas e em diferentes &aacute;reas. Problemas envolvendo concorrência, aplica&ccedil;ões web, aplica&ccedil;ões de alto desempenho, desenvolvimento de APIs, soquetes de comunica&ccedil;&atilde;o etc ... É onde a linguagem est&aacute; se tornando cada vez mais proeminente no mercado e nas comunidades.</p>
+
+	  			</div>
+
+  				<hr />
+
+  				<div id="sec20">
+
+	  				<h3>Introdu&ccedil;&atilde;o conte&uacute;dos</h3>
+
+	  				<p>Go est&aacute; na vers&atilde;o 1.12.7 e caminhando para vers&atilde;o 2.0, todo ciclo de desenvolvimento de seu core respeita o arcabo&ccedil;o e designer do que foi proposto no inicio do surgimento da linguagem. O objetivo centrarl sobre Go &eacute; torna-l&aacute; cada vez mais produtiva e deixar a linguagem ainda mais simples para os que forem desenvolver em Go.</p>
+
+	  				<p>Durante o processo, a equipe de desenvolvimento Go apresentou quatro maneiras principais de simplificar a experiência geral de escrever programas Go: <strong>Remodelando, Redefinindo, Removendo e Restringindo</strong> chamado os quatro <strong>R's</strong> da simplifica&ccedil;ões.</p>
+
+	  				<p>Neste cen&aacute;rio percebe-se claramente que no designer de Go <strong>"Menos &eacute; exponencialmente Mais"</strong>, e nasceu o termo <strong>"Jeito Go de fazer as coisas".</strong> 
+	  				<p>Aqui um post completo <a href="https://medium.com/@jeffotoni/golang-simplificando-a-complexidade-o-inicio-145371d67711" target="_blank">"Simplificando a Complexidade. O Inicio"</a></p>
+
+	  				<p>Espero que todos gostem e possam servir de base para aprender e ajudar v&aacute;rios Gophers possíveis.</p>
+
+	  				<p>O conteúdo e as referências usadas s&atilde;o do Site Oficial de Golang e grande parte &eacute; feita sobre a &oacute;tica pr&aacute;tica do autor.</p>
+
+	  			</div>
+
+
+	  			<div id="sec21">
+
+	  				<h3>Fundamentos da Linguagem</h3>
+
+	  			</div>
+
+	  			<div id="sec21_1">
+
+	  				<h4>1 - Compilada e est&aacute;tica</h4>
+
+<pre><code class="language-go">$ go build
+$ go build -ldflags="-s -w" hello.go</code></pre>
+
+					<p>Compilando para Lambda</p>
+
+<pre><code class="language-go">$ GOOS=linux GOARCH=amd64 go build -o lambda lambda.go</code></pre>
+
+					<p>Compilando para WebAssembly</p>
+
+<pre><code class="language-go">$ GOARCH=wasm GOOS=js go build -o test.wasm hello.go</code></pre>
+
+
+					<p>Compilando e gerando um .o file, e gera o seu assembly</p>
+
+<pre><code class="language-go">$ GOOS=linux GOARCH=amd64 go tool compile -S hello.go 
+$ go tool compile -S hello.go > hello.S
+$ go build -gcflags -S hello.go</code></pre>
+
+					<p>Gerando o dump do assembly</p>
+
+<pre><code class="language-go">$ go tool objdump hello > ref-assembly</code></pre>
+
+					<p>Isso est&aacute; no c&oacute;digo para quando compilamos para diferenciar e compilar somente aqueles que contêm essas tags. Ao compilar basta informar a tag que você colocou no seu c&oacute;digo.</p>
+
+<pre><code class="language-go">// +build !windows
+$ go build -o main main</code></pre>
+
+					<p>Buildmode</p>
+
+<pre><code class="language-go">$ go help buildmode </code></pre>
+<p><strong>-buildmode=plugin</strong></p>
+
+<p><strong>plugin/randseed.so</strong></p>
+<pre><code>
+package main
+
+import (
+	"crypto/md5"
+	"fmt"
+	"io"
+	"math/rand"
+	"strconv"
+	"time"
+)
+
+func RandSeed() string {
+	rand.Seed(time.Now().Unix())
+	return Md5(strconv.Itoa(rand.Intn(1000000) + rand.Intn(100000)))
+}
+
+func Md5(text string) string {
+	h := md5.New()
+	io.WriteString(h, text)
+	return (fmt.Sprintf("%x", h.Sum(nil)))
+}
+
+</code></pre>
+
+<pre><code class="language-go">$ go build -buildmode=plugin -o plugin/randseed.so .plugin/randseed.go </code></pre>
+
+<pre><code class="language-go">
+package main
+
+import "plugin"
+import "io"
+import "strings"
+import "os"
+
+func main() {
+	p, err := plugin.Open("../plugin/randseed.so")
+	if err != nil {
+		panic(err)
+	}
+
+	f, err := p.Lookup("RandSeed")
+	if err != nil {
+		panic(err)
+	}
+
+	randstr := f.(func() string)())
+	io.Copy(os.Stdout, strings.NewReader(randstr))
+}
+</code></pre>
+
+<pre><code class="language-go">$ go run main.go </code></pre>
+
+<p>Compilando est&aacute;tica em C</p>
+<pre><code class="language-go">
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  int i;
+
+  printf("Gerando 10 valores aleatorios:\n\n");
+  
+  for (i = 0; i < 10; i++)
+  {
+    /* gerando valores aleat&oacute;rios entre zero e 100 */
+    printf("%d ", rand() % 100);
+  }
+  
+  return 0;
+}
+</code></pre>
+<pre><code class="language-go">$ gcc -static -o rand rand.c -lm</code></pre>
+
+<p><strong>Vari&aacute;veis ambiente importantes</strong></p>
+<pre><code class="language-go">$ GO111MODULE=on GOMAXPROCS=NUMERO-CPU go build </code></pre>
+
+	  			</div>
+
+	  			<hr />
+
+	  			<div id="sec21_2">
+
+	  				<h4>2 - Gc (Garbage Collector)</h4>
+	  				<small><a href="https://blog.golang.org/ismmkeynote" target="_blank">https://blog.golang.org/ismmkeynote</a></small>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+import "runtime"
+import "sync"
+
+func  main() {
+	lotsOf := make([]*int, 15e8)
+	runtime.GC()
+	numWorkers := runtime.NumCPU()
+	var wg sync.WaitGroup
+	for i := 0; i < numWorkers; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			work()
+		}()
+	}
+	wg.Wait()
+	runtime.KeepAlive(lotsOf)
+}</code></pre>
+
+	  			</div>
+
+	  			<hr />
+
+	  			<div id="sec21_3">
+
+	  				<h4>3 - Paradigma Concorrente</h4>
+
+	  				<p><strong>Canais</strong> s&atilde;o como <strong>filas</strong> que fornece acesso sincronizado autom&aacute;tico entre goroutines. 
+	  				Esse entendimento nos levar&aacute; a escrever c&oacute;digos concorrentes.</p>
+
+	  				<p>O importante &eacute; sempre focar como eles se comportam. 
+	  				Um canal permite que uma goroutine sinalize outra goroutine sobre um determinado evento. 
+	  				A sinaliza&ccedil;&atilde;o est&aacute; no centro de tudo que você deve fazer com os canais. 
+	  				Pensar nos canais como um mecanismo de sinaliza&ccedil;&atilde;o permitir&aacute; que você escreva um c&oacute;digo melhor com um comportamento bem definido e mais preciso. </p>
+
+	  				<p>Para entender como funciona a sinaliza&ccedil;&atilde;o, precisamos entender seus três atributos:
+
+	  					<br />- Garantia de entrega
+	  					<br />- Estado
+	  					<br />- Com ou sem dados
+	  				</p>
+
+	  				<p>Esses três atributos trabalham juntos para criar uma filosofia de design em torno da sinaliza&ccedil;&atilde;o. </p>
+
+	  				<p><strong>Garantia de entrega</strong><br /><p>
+
+	  				<p><img width="70%" src="img/garantia.png" alt="" /></p>
+
+	  				<p>A garantia de entrega &eacute; baseada em uma pergunta: "Preciso de uma garantia de que o sinal enviado por uma goroutine específica foi recebido?"</p>
+
+<pre><code class="language-go">func main() {
+ch := make(chan string)
+go func() {
+p := <-ch // Receive
+}()
+
+ch <- "goworkshop" // Send
+}</code></pre>
+
+					<p>Estado<br />
+
+					<p>
+						<img width="70%" src="img/estadogo.png">
+					</p>	
+					<p>
+					O comportamento de um canal &eacute; diretamente influenciado pelo seu estado atual. O estado de um canal pode ser nulo, aberto ou fechado.</p>
+
+<pre><code class="language-go">// ** nil channel
+// Um chan &eacute; um estado com nil quando ele &eacute; declardo com zero value
+var ch chan string
+
+// Um chan pode ser alterado com nil e torna um estado de forma explicita
+ch = nil
+
+// ** open channel
+// Um chan &eacute; de estado aberto quando &eacute; usado built-in function make.
+ch := make(chan string)    
+
+// ** closed channel
+// Um chan &eacute; fechado o estado quando &eacute; usado built-in function close.
+close(ch)</code></pre>
+
+					<p>Quando um canal est&aacute; em um estado nulo , qualquer tentativa de envio ou recebimento no canal ser&aacute; bloqueada. Quando um canal est&aacute; em estado aberto , os sinais podem ser enviados e recebidos. Quando um canal &eacute; colocado em um estado fechado , os sinais n&atilde;o podem mais ser enviados, mas ainda &eacute; possível receber sinais.</p>
+
+					<p>Esses estados fornecer&atilde;o os diferentes comportamentos que você precisa para as diferentes situa&ccedil;ões que encontrar. Ao combinar Estado com Garantia de Entrega , você pode come&ccedil;ar a analisar os custos / benefícios que você est&aacute; incorrendo como resultado de suas escolhas de projeto. Em muitos casos, você tamb&eacute;m ser&aacute; capaz de identificar rapidamente os bugs apenas lendo o c&oacute;digo, porque você entende como o canal vai se comportar.</p>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	ch := make(chan string,10)
+
+	ch <- "goworkshop 1" // Send
+	ch <- "goworkshop 2" // Send
+	ch <- "goworkshop 3" // Send
+
+	fmt.Println(<-ch) // Receive
+	fmt.Println(<-ch) // Receive
+	fmt.Println(<-ch) // Receive
+}</code></pre>
+
+<br />
+
+<pre><code class="language-go">
+package main
+
+import "fmt"
+import "time"
+
+var stream = make(chan int)
+var fin = make(chan bool)
+
+func produce() {
+    for i := 0; i < 10; i++ {
+        fmt.Println("sending")
+        stream <- i
+        fmt.Println("sent")
+    }
+
+    fmt.Println("No closing channel")
+    //close(stream)
+    fin <- true
+}
+
+func consume() {
+    for {
+        data := <-stream
+        fmt.Println("Consumer: ", data)
+        time.Sleep(500 * time.Millisecond)
+    }
+}
+
+func main() {
+    go consume()
+    go produce()
+    <-fin
+    fmt.Println("After calling DONE")
+}</code></pre>
+
+<p><strong>Sinaliza&ccedil;&atilde;o com dados</strong></p>
+
+<p>Quando você vai sinalizar com dados, existem três op&ccedil;ões de configura&ccedil;&atilde;o de canal que você pode escolher dependendo do tipo de garantia que você precisa.</p>
+
+<p><strong>Figura 3: sinaliza&ccedil;&atilde;o com dados</strong></p>
+<img width="70%" src="img/sinalizacao.png">
+
+<p>As três op&ccedil;ões de canal s&atilde;o: <strong> sem buffer , Buffered> 1 ou Buffered = 1.</strong></p>
+<p>O tamanho do buffer nunca deve ser um número aleat&oacute;rio. Ele deve sempre ser calculado para alguma restri&ccedil;&atilde;o bem definida. N&atilde;o h&aacute; infinito na computa&ccedil;&atilde;o, tudo deve ter alguma restri&ccedil;&atilde;o bem definida, seja tempo ou espa&ccedil;o.</p>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec21_4">
+
+		  				<h4>4 - Tipagem est&aacute;tica</h4>
+
+		  				<p>Go &eacute; uma linguagem de programa&ccedil;&atilde;o compilada e pertence a família da linguagem C. 
+		  				Contudo, seu tempo de compila&ccedil;&atilde;o &eacute; muito mais r&aacute;pido do que outras linguagens da mesma família. Ela possui apenas 25 palavras-chave (palavras reservadas). Vamos dar uma olhada nessas palavras antes de come&ccedil;ar.</p>
+
+		  				<table class="tbl-palavras-reservadas">
+		  					<tr>
+		  						<td>break</td>
+		  						<td>default</td>
+		  						<td>func</td>
+		  						<td>interface</td>
+		  						<td>select</td>
+		  					</tr>
+		  					<tr>
+		  						<td>case</td>
+		  						<td>defer</td>
+		  						<td>go</td>
+		  						<td>map</td>
+		  						<td>struct</td>
+		  					</tr>
+		  					<tr>
+		  						<td>chan</td>
+		  						<td>else</td>
+		  						<td>goto</td>
+		  						<td>package</td>
+		  						<td>switch</td>
+		  					</tr>
+		  					<tr>
+		  						<td>const</td>
+		  						<td>fallthrough</td>
+		  						<td>if</td>
+		  						<td>range</td>
+		  						<td>type</td>
+		  					</tr>
+		  					<tr>
+		  						<td>continue</td>
+		  						<td>for</td>
+		  						<td>import</td>
+		  						<td>return</td>
+		  						<td>var</td>
+		  					</tr>
+		  				</table>
+
+		  				<br />
+
+<pre><code class="language-go">
+package main
+
+import "fmt"
+
+type Produto struct {
+	Id    int64
+	Nome  string
+	Preco float64
+}
+
+func main() {
+
+	type MyString string
+
+	const nome string = "@jeffotoni"
+
+	var p Produto
+	var vars MyString
+	var t string
+	var a int
+
+	vars = MyString(nome)
+	t = "ola"
+	a = 100
+	p.Id = 1000
+	p.Nome = "TV LG"
+	p.Preco = 2500.00
+
+	fmt.Println(t)
+	fmt.Println(a)
+	fmt.Println(nome)
+	fmt.Println(vars)
+	fmt.Println(p)
+}
+</code></pre>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec21_5">
+
+		  				<h4>5 - Semântica &eacute; clara</h4>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Workshop2.0")
+}</code></pre>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec21_6">
+
+		  				<h4>6 - Sintaxe &eacute; limpa</h4>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	io.Copy(os.Stdout, strings.NewReader(f.(func() string)()))
+}</code></pre>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec21_7">
+
+		  				<h4>7 - É de uso Geral</h4>
+
+<pre><code class="language-go">
+package main
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void GoPrint(char* s) {
+printf("%s\n", s);
+}
+*/
+import "C"
+
+func main() {
+C.GoPrint(C.CString("Workshop 2.0\n"))
+}</code></pre>
+
+<pre><code class="language-go">$ go run main.go</code></pre>
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec21_8">
+
+		  				<h4>8 - Plataformas: Windows, Linux, Mac e FreeBSD</h4>
+
+		  			</div>
+
+	  				<hr />
+
+		  			<div id="sec22">
+
+		  				<h2>Instala&ccedil;&atilde;o</h2>
+
+		  			</div>
+
+		  			<div id="sec22_1">
+		  				
+		  				<h3>Introdu&ccedil;&atilde;o &agrave; Instala&ccedil;&atilde;o</h3>
+
+		  				<p>Em golang a instala&ccedil;&atilde;o &eacute; muito simples e pr&aacute;tica, para Linux, Mac e Windows.</p>
+
+		  				<p>Basta copiar os arquivos para o diret&oacute;rio correto para cada sistema operacional e exportar os caminhos para o ambiente e solicitar, golang est&aacute; instalado.</p>
+
+		  				<p>Vamos dar uma olhada em como fazemos isso.</p>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec22_2">
+		  				
+		  				<h3>Instala&ccedil;&atilde;o</h3>
+
+		  				<p>Vamos baixar o arquivo, descompact&aacute;-lo e instal&aacute;-lo em /usr/local/go, se tivermos golang j&aacute; instalado na m&aacute;quina teremos que remover o existente para deixar nossa instala&ccedil;&atilde;o como única. Vamos criar nosso diret&oacute;rio em nosso espa&ccedil;o de trabalho e testar para ver se tudo correu bem.</p>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec22_3">
+		  				
+		  				<h3>Linux</h3>
+
+<pre><code class="language-go">$ sudo rm -rf /usr/local/go
+$ wget https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz</code></pre>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec22_4">
+		  				
+		  				<h3>$GOPATH</h3>
+
+		  				<p>$GOPATH &eacute; o golang em seu $HOME, isso &eacute; necess&aacute;rio para que seus projetos usem o pkg e construam corretamente. Isso era obrigat&oacute;rio para todas as versões anteriores à vers&atilde;o 1.11. O legal &eacute; que a partir de agora n&atilde;o teremos que criar projetos no $GOPATH, podemos criar em qualquer outro diret&oacute;rio que n&atilde;o esteja no $GOPATH.</p>
+
+		  				<p>Aqui est&aacute; o link para a proposta de vers&atilde;o proposta: <a href="https://go.googlesource.com/proposal/+/master/design/24301-versioned-go.md/" target="_blank">M&oacute;dulos Go versionados</a> ou <a href="https://github.com/golang/go/wiki/Modules" target="_blank">Go 1.11 Modules</a></p>
+
+		  				<p>Vamos detalhar como trabalhar com o <strong>go mod</strong>, foi uma das melhores experiências que tive para projetos de versionamento usando Golang.</p>
+
+		  				<p>Vamos configurar nosso ambiente para rodar o Go. Adicione <strong>/usr/local/go/bin</strong> à vari&aacute;vel de ambiente PATH. Você pode fazer isso adicionando esta linha ao seu <strong>/etc/profile</strong> (para uma instala&ccedil;&atilde;o em todo o sistema) ou <strong>$HOME/.profile.</strong></p>
+
+<pre><code class="language-go">$ export PATH=$PATH:/usr/local/go/bin</code></pre>
+
+						<p><strong>Nota:</strong> as altera&ccedil;ões feitas em um arquivo de perfil podem n&atilde;o se aplicar at&eacute; a pr&oacute;xima vez que você fizer login no seu computador. Para aplicar as altera&ccedil;ões imediatamente, basta executar os comandos do shell diretamente ou execut&aacute;-los a partir do perfil usando um comando como o source $HOME/.profile.</p>
+
+<pre><code class="language-go">$ echo "export GOPATH=$HOME/go" >> $HOME/.profile
+$ echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
+$ echo "export PATH=$PATH:$GOPATH/bin" >> $HOME/.profile</code></pre>
+
+		  			</div>
+
+		  			<hr />
+
+		  			<div id="sec22_5">
+
+		  				<h3>Teste nossa instala&ccedil;&atilde;o</h3>
+
+		  				<p>Vamos executar a vers&atilde;o para ver se tudo est&aacute; correto.</p>
+
+<pre><code class="language-go">$ go version
+$ go version go1.11.5 linux/amd64</code></pre>
+
+						<p>Verifique se o Go est&aacute; instalado corretamente configurando um espa&ccedil;o de trabalho e construindo um programa simples, da seguinte maneira.</p>
+
+						<p>Crie seu diret&oacute;rio de &aacute;rea de trabalho, $HOME/go. (Se você quiser usar um diret&oacute;rio diferente, precisar&aacute; definir a vari&aacute;vel de ambiente $GOPATH.)</p>
+
+						<p>Em seguida, fa&ccedil;a o diret&oacute;rio src/hello dentro de sua &aacute;rea de trabalho e, nesse diret&oacute;rio, crie um arquivo chamado hello.go que se pare&ccedil;a com:</p>
+
+					</div>
+
+					<hr />
+
+					<div id="sec22_6">
+
+		  				<h3>Workspace</h3>
+
+		  				<p>O espa&ccedil;o de trabalho &eacute; o nosso local de trabalho, onde organizaremos nossos diret&oacute;rios com nossos projetos. Como mostrado acima, at&eacute; o Go vers&atilde;o 1.11 fomos for&ccedil;ados a fazer tudo sob o Espa&ccedil;o de Trabalho. $GOPATH Down Projects.</p>
+
+<pre><code class="language-go">$ export GOPATH=$HOME/go
+$ mkdir $HOME/go
+$ mkdir $HOME/go/src
+$ mkdir $HOME/go/src/hello
+$ vim $HOME/go/src/hello/hello.go</code></pre>
+
+<br />
+
+<pre><code class="language-go">$GOPATH/
+  |-src
+    |-hello
+      |-hello.go</code></pre>
+
+<br />
+
+		  				<h4>Projeto de Exemplo</h4>
+
+<pre><code class="language-go">$ export GOPATH=$HOME/go
+$ mkdir $HOME/go/src/project1
+$ mkdir $HOME/go/src/project1/my-pkg
+$ mkdir $HOME/go/src/project1/my-cmd
+$ mkdir $HOME/go/src/project1/my-vendor
+$ mkdir $HOME/go/src/project1/my-logs
+$ mkdir $HOME/go/src/project1/my-models
+$ mkdir $HOME/go/src/project1/my-repo
+$ mkdir $HOME/go/src/project1/my-handler</code></pre>
+
+<br />
+
+		  				<h4>Projeto de Exemplo</h4>
+
+<pre><code class="language-go">$GOPATH/
+|-src
+|-github.com/user/project1/
+|-cmd (do project1)
+|-main.go
+|-vendor
+|-logs
+|-models
+|-repo
+|-handler
+|-github.com/user/project2/
+....
+....</code></pre>
+
+<br />
+
+						<p>A vari&aacute;vel de ambiente $GOPATH informa a ferramenta Go onde sua &aacute;rea de trabalho est&aacute; localizada.</p>
+
+<pre><code class="language-go">$ go get github.com/user/project1</code></pre>
+
+						<p>O comando go get recupera reposit&oacute;rios de origem da Internet e os coloca em sua &aacute;rea de trabalho. Os caminhos do pacote s&atilde;o importantes para a ferramenta Ir. Usar "github.com/..." significa que a ferramenta sabe como buscar seu reposit&oacute;rio.</p>
+
+						<p>No cen&aacute;rio acima, tudo teria que ficar em nosso $ GOPATH para que nossos projetos funcionassem corretamente.</p>
+
+					</div>
+
+					<hr />
+
+					<div id="sec22_7">
+		  				
+		  				<h3>Fora do $GOPATH</h3>
+
+		  				<p>Agora podemos fazer nossos projetos sem estar em $GOPATH, podemos, por exemplo, fazê-lo em qualquer diret&oacute;rio.</p>
+
+		  				<h4>Projeto Fora do GOPATH</h4>
+
+<pre><code class="language-go">$ export GOPATH=$HOME/go
+$ mkdir $HOME/2019/project1
+$ mkdir $HOME/2019/project1/my-pkg
+$ mkdir $HOME/2019/project1/my-cmd
+$ mkdir $HOME/2019/project1/my-logs
+$ mkdir $HOME/2019/project1/my-models
+$ mkdir $HOME/2019/project1/my-repo
+$ mkdir $HOME/2019/project1/my-handler</code></pre>
+
+<br />
+
+<pre><code class="language-go">$HOME/
+|-2019
+|-github.com/user/project1/
+  |-cmd
+    |-main.go
+  |-vendor
+  |-logs
+  |-models
+  |-repo
+  |-handler</code></pre>
+
+  <br />
+
+  						<p>Podemos colocar nosso projeto em qualquer diret&oacute;rio agora.</p>
+
+
+<pre><code class="language-go">$HOME/
+|-any-directory
+|-github.com/user/project1/
+  |-cmd
+    |-main.go
+  |-vendor
+  |-logs
+  |-models
+  |-repo
+  |-handler</code></pre>
+
+  						<p>Para o cen&aacute;rio acima, teremos que usar o go mod em nosso projeto para que todos os pacotes externos possam funcionar corretamente, assim poderemos gerenci&aacute;-los corretamente e vers&atilde;o. Mais informa&ccedil;ões podem ser encontradas aqui: Wiki Go Modules</p>
+
+  						<p>Exemplo pr&aacute;tico de como você ir&aacute; proceder:</p>
+
+
+						<pre><code class="language-go">$ go mod init github.com/user/project1</code></pre>
+
+					</div>
+
+	  				<hr />
+
+	  				<div id="sec25">
+
+	  					<h3>Instala&ccedil;&atilde;o Docker</h3>
+	  					
+	  					<p>Se n&atilde;o quisermos instalar diretamente em nosso sistema operacional golang, podemos instal&aacute;-lo em um contêiner docker.</p>
+
+	  					<p>Podemos carregar um contêiner docker com o idioma instalado e compilar e executar nossos programas a partir desse contêiner.</p>
+
+	  					<p>Vamos verificar como podemos fazer isso abaixo.</p>
+
+	  					<p>Mais informa&ccedil;ões e detalhes você pode visitar este link: <a href="https://hub.docker.com/_/golang" target="_blank">hub.docker</a></p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec25_1">
+
+	  					<h3>Instala&ccedil;&atilde;o Docker para Golang</h3>
+
+<pre><code class="language-go">$ docker pull golang</code></pre>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec25_2">
+
+	  					<h3>Compile seu aplicativo dentro do cont&ecirc;iner Docker</h3>
+
+	  					<p>Pode haver ocasiões em que n&atilde;o &eacute; apropriado executar seu aplicativo em um contêiner. Para compilar, mas n&atilde;o executar seu aplicativo dentro da instância do Docker, você pode escrever algo como:</p>
+
+<pre><code class="language-go">$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.11.5 go build -v</code></pre>
+
+	  					<p>Isso adicionar&aacute; seu diret&oacute;rio atual como um volume ao contêiner, configurar&aacute; o diret&oacute;rio de trabalho para o volume e executar&aacute; o comando go build, que informar&aacute; para compilar o projeto no diret&oacute;rio de trabalho e exibir o execut&aacute;vel em myapp. Como alternativa, se você tiver um Makefile, poder&aacute; executar o comando make dentro do contêiner.</p>
+
+<pre><code class="language-go">$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.11.5 make</code></pre>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec25_3">
+
+	  					<h3>Fa&ccedil;a a compila&ccedil;&atilde;o cruzada do seu aplicativo dentro do contêiner do Docker</h3>
+
+	  					<p>Se você precisar compilar seu aplicativo para uma plataforma diferente de linux/amd64 (como Windows/386):</p>
+
+<pre><code class="language-go">$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows \
+-e GOARCH=386 golang:1.11.5 go build -v</code></pre>
+
+						<h3>Exemplo main.go</h3>
+
+						<p>Vamos fazer nosso programa de testes, vamos chamar isso de main.go</p>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main(){
+	fmt.Println("Meu primeiro programa sendo compilado por um contêiner docker!")
+}</code></pre>
+
+						<p>Agora vamos rodar um programa para ver se funciona corretamente.</p>
+
+<pre><code class="language-go">$ docker run --rm -v "$PWD":/usr/src/main -w /usr/src/main golang:1.11.5 go run main.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">Meu primeiro programa sendo compilado por um contêiner docker!</code></pre>
+
+						<p>Verifique a vers&atilde;o:</p>
+
+<pre><code class="language-go">$ docker run --rm -v "$PWD":/usr/src/main -w /usr/src/main golang:1.11.5 go version</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">go version go1.11.5 linux/amd64</code></pre>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24">
+	  						
+	  					<h2>Introdu&ccedil;&atilde;o Golang</h2>
+
+	  					<p>Go &eacute; uma linguagem de prop&oacute;sito geral projetada com a programa&ccedil;&atilde;o de sistemas em mente. É fortemente tipado e colecionado de lixo e tem suporte explícito para programa&ccedil;&atilde;o concorrente. Os programas s&atilde;o construídos a partir de pacotes, cujas propriedades permitem o gerenciamento eficiente de dependências.</p>
+
+	  					<p>A gram&aacute;tica &eacute; compacta e regular, permitindo f&aacute;cil an&aacute;lise por ferramentas autom&aacute;ticas, como ambientes de desenvolvimento integrados.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24_1">
+	  						
+	  					<h2>Linguagem Golang</h2>
+
+	  				</div>
+
+	  				<div id="sec24_2">
+
+	  					<h3>Palavras-chave</h3>
+
+	  					<p>As seguintes palavras-chave s&atilde;o reservadas e n&atilde;o podem ser usadas como identificadores.</p>
+
+	  					<table class="tbl-palavras-reservadas">
+		  					<tr>
+		  						<td>break</td>
+		  						<td>default</td>
+		  						<td>func</td>
+		  						<td>interface</td>
+		  						<td>select</td>
+		  					</tr>
+		  					<tr>
+		  						<td>case</td>
+		  						<td>defer</td>
+		  						<td>go</td>
+		  						<td>map</td>
+		  						<td>struct</td>
+		  					</tr>
+		  					<tr>
+		  						<td>chan</td>
+		  						<td>else</td>
+		  						<td>goto</td>
+		  						<td>package</td>
+		  						<td>switch</td>
+		  					</tr>
+		  					<tr>
+		  						<td>const</td>
+		  						<td>fallthrough</td>
+		  						<td>if</td>
+		  						<td>range</td>
+		  						<td>type</td>
+		  					</tr>
+		  					<tr>
+		  						<td>continue</td>
+		  						<td>for</td>
+		  						<td>import</td>
+		  						<td>return</td>
+		  						<td>var</td>
+		  					</tr>
+		  				</table>
+
+		  				<br />
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24_3">
+
+	  					<h3>Operadores e Pontua&ccedil;&atilde;o</h3>
+
+	  					<p>As sequências de caracteres a seguir representam operadores (incluindo operadores de atribui&ccedil;&atilde;o) e pontua&ccedil;&atilde;o:</p>
+
+	  					<table class="tbl-palavras-reservadas">
+	  						<tr>
+	  							<td>+</td>
+	  							<td>&</td>
+	  							<td>+=</td>
+	  							<td>&=</td>
+	  							<td>&&</td>
+	  							<td>==</td>
+	  							<td>!=</td>
+	  							<td>(</td>
+	  							<td>)</td>
+	  						</tr>
+	  						<tr>
+	  							<td>-</td>
+	  							<td>|</td>
+	  							<td>-=</td>
+	  							<td>|=</td>
+	  							<td>||</td>
+	  							<td><</td>
+	  							<td><=</td>
+	  							<td>[</td>
+	  							<td>]</td>
+	  						</tr>
+	  						<tr>
+	  							<td>*</td>
+	  							<td>^</td>
+	  							<td>*=</td>
+	  							<td>^=</td>
+	  							<td><-</td>
+	  							<td>></td>
+	  							<td>>=</td>
+	  							<td>{</td>
+	  							<td>}</td>
+	  						</tr>
+	  						<tr>
+	  							<td>/</td>
+	  							<td><<</td>
+	  							<td>/=</td>
+	  							<td><<=</td>
+	  							<td>++</td>
+	  							<td>=</td>
+	  							<td>:=</td>
+	  							<td>,</td>
+	  							<td>;</td>
+	  						</tr>
+	  						<tr>
+	  							<td>%</td>
+	  							<td>>></td>
+	  							<td>%=</td>
+	  							<td>>>=</td>
+	  							<td>--</td>
+	  							<td>!</td>
+	  							<td>...</td>
+	  							<td>.</td>
+	  							<td>:</td>
+	  						</tr>
+	  						<tr>
+	  							<td>&nbsp;</td>
+	  							<td>&^</td>
+	  							<td>&nbsp;</td>
+	  							<td>&^=</td>
+	  							<td>&nbsp;</td>
+	  							<td>&nbsp;</td>
+	  							<td>&nbsp;</td>
+	  							<td>&nbsp;</td>
+	  							<td>&nbsp;</td>
+	  						</tr>
+	  					</table>
+
+		  				<br />
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24_4">
+
+	  					<h3>Println / Print</h3>
+
+	  					<p>Vamos aprender como enviar dados para a tela, que &eacute; realmente a saída padr&atilde;o <strong>stdout</strong>, veremos mais adiante com detalhes sobre <strong>stdout</strong> e <strong>stdin</strong>.</p>
+
+	  					<p>Vamos conhecer <strong>print, println e fmt.Println</strong></p>
+
+	  					<p>As implementa&ccedil;ões atuais fornecem v&aacute;rias fun&ccedil;ões internas úteis durante o bootstrapping. Essas fun&ccedil;ões s&atilde;o documentadas para integridade, mas n&atilde;o garantem a permanência no idioma. Eles n&atilde;o retornam um resultado.</p>
+
+	  					<p>Restri&ccedil;&atilde;o de implementa&ccedil;&atilde;o: <strong>print e println</strong> n&atilde;o precisam aceitar tipos arbitr&aacute;rios de argumentos, mas a impress&atilde;o de tipos booleanos, num&eacute;ricos e de string deve ser suportada.</p>
+
+	  					<p><strong>println &eacute; uma fun&ccedil;&atilde;o embutida</strong> (no tempo de execu&ccedil;&atilde;o) que pode eventualmente ser removida, enquanto o <strong>pacote fmt</strong> est&aacute; na biblioteca padr&atilde;o, que persistir&aacute;.</p>
+
+<pre><code class="language-go">Function   Behavior
+
+print      prints all arguments; formatting of arguments is implementation-specific
+println    like print but prints spaces between arguments and a newline at the end</code></pre>
+
+						<p>Usando print:</p>
+
+<pre><code class="language-go">// test print
+package main
+
+func main() {
+   print("debugando meu sistema com print")
+}</code></pre>
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">debugando meu sistema com print</code></pre>
+
+						<p>Usando println:</p>
+
+<pre><code class="language-go">// test println
+package main
+
+func main() {
+   println("debugando meu sistema com println")
+}</code></pre>
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">debugando meu sistema com println</code></pre>
+
+						<p>Usando fmt.Println:</p>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+   fmt.Println("debugando meu sistema com fmt.Println")
+}</code></pre>
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">debugando meu sistema com fmt.Println</code></pre>
+
+						<p>O objetivo de iniciar e executar o comando print, println ou fmt.Println &eacute; nos ajudar com os testes que faremos a partir de agora em todas as etapas do nosso aprendizado Go.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24_5">
+
+	  					<h3>Bufio NewWriter</h3>
+
+<pre><code class="language-go">bufio.Writer</code></pre>
+
+						<p>Fazer muitas grava&ccedil;ões pequenas pode prejudicar o desempenho. Cada grava&ccedil;&atilde;o &eacute;, em última instância, um syscall e se fazer com freqüência pode sobrecarregar a CPU. Dispositivos como discos funcionam melhor lidando com dados alinhados ao bloco. Para evitar a sobrecarga de muitas pequenas opera&ccedil;ões de grava&ccedil;&atilde;o, o Golang &eacute; fornecido com o bufio.Writer. Os dados, em vez de ir diretamente para o destino (implementando a interface io.Writer) s&atilde;o acumulados primeiro dentro do buffer e enviados quando o buffer est&aacute; cheio:</p>
+
+						<p>Vamos visualizar como o buffer funciona com nove grava&ccedil;ões (um caractere cada) quando o buffer tem espa&ccedil;o para quatro caracteres:</p>
+
+<pre><code class="language-go">producer         buffer           destination (io.Writer)
+ 
+   a    ----->   a
+   b    ----->   ab
+   c    ----->   abc
+   d    ----->   abcd
+   e    ----->   e      ------>   abcd
+   f    ----->   ef               abcd
+   g    ----->   efg              abcd
+   h    ----->   efgh             abcd
+   i    ----->   i      ------>   abcdefgh</code></pre>
+
+   						<p>Confira o exemplo abaixo</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"os"
+)
+
+// creating the write object pointer
+// so that we can receive value in every
+// scope of our program
+var writer *bufio.Writer
+
+func main() {
+	// All screen output will be redirected
+	// to bufio.NewWriter
+	writer = bufio.NewWriter(os.Stdout)
+	s := "How many stars does Orion have?\n"
+	var b byte = 'H'
+
+	writer.WriteString(s)
+	writer.WriteByte(b)
+	writer.WriteString("\n")
+
+	// when all the functions finishes it closes
+	// the buffer and sends to the.Stdout
+	defer writer.Flush()
+}</code></pre>
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">How many stars does Orion have?
+H</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec24_6">
+
+	  					<h3>Func Main</h3>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+  fmt.Printf("hello, Gophers\n")
+}</code></pre>
+
+						<p>Em seguida, vamos dar <strong>build</strong> com o <strong>go tool</strong>:</p>
+
+<pre><code class="language-go">$ cd $HOME/go/src/hello
+$ go build</code></pre>
+
+						<p>Ou podemos compilar assim:</p>
+
+<pre><code class="language-go">$ cd $HOME/go/src/hello
+$ go build -o hello hello.go</code></pre>
+
+						<p>O comando acima ir&aacute; construir um execut&aacute;vel chamado hello no diret&oacute;rio ao lado do seu c&oacute;digo-fonte. Execute para ver a sauda&ccedil;&atilde;o:</p>
+
+<pre><code class="language-go">$ ./hello
+hello, Gophers</code></pre>
+
+						<p>Verifique tamb&eacute;m o comando <strong>run</strong> com o go:</p>
+
+<pre><code class="language-go">$ go run hello.go
+hello, Gophers</code></pre>
+
+						<p>Se você vir a mensagem <strong>"hello, Gophers"</strong>, sua instala&ccedil;&atilde;o do Go <strong>est&aacute; funcionando</strong>.</p>
+
+						<p>Você pode executar <strong>go install</strong> para instalar o bin&aacute;rio no diret&oacute;rio <strong>bin</strong> do seu workspace ou <strong>go clean -i</strong> para removê-lo.</p>
+
+						<p>Exemplo: go install</p>
+
+<pre><code class="language-go">$ pwd
+$ $HOME/go/src/hello
+$ cd $HOME/go/src/hello
+$ go install
+$ ls -lhs $HOME/go/bin
+-rwxrwxr-x 1 user user 2,9M nov  8 03:11 hello</code></pre>
+
+						<p>Example: go clean -i</p>
+
+<pre><code class="language-go">$ go clean -i 
+$ ls -lhs $HOME/go/bin</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23">
+	  						
+	  					<h2>Comandos Go</h2>
+
+	  				</div>
+
+	  				<div id="sec23_1">
+	  						
+	  					<h3>Introdu&ccedil;&atilde;o Comandos Go</h3>
+
+	  					<p>Em golang, temos um arsenal para nos ajudar quando se trata de compilar, testar, documentar, gerenciar perfis etc.</p>
+
+<pre><code class="language-go">bug         iniciar um relat&oacute;rio de bug
+build       compilar pacotes e dependências
+clean       remover arquivos de objetos e arquivos em cache
+doc         mostrar documenta&ccedil;&atilde;o para pacote ou símbolo
+env         imprimir informa&ccedil;ões do ambiente Go
+fix         atualizar pacotes para usar novas APIs
+fmt         gofmt (reformatar) fontes de pacotes
+generate    gerar arquivos Go processando a origem
+get         baixar e instalar pacotes e dependências
+install     compilar e instalar pacotes e dependências
+list        lista de pacotes ou m&oacute;dulos
+mod         manuten&ccedil;&atilde;o de m&oacute;dulo
+run         compilar e executar o programa Go
+test        testar pacotes
+tool        executar ferramenta especifica do Go 
+version     mostrar vers&atilde;o Go
+vet         relatar erros prov&aacute;veis em pacotes</code></pre>
+
+						<p>Use "go help" para mais informa&ccedil;ões sobre um comando.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_2">
+
+	  					<h3>Go Run</h3>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">go run [build flags] [-exec xprog] package [arguments...]</code></pre>
+
+						<p>Executar compila e executa o pacote principal chamado Go. Normalmente, o pacote &eacute; especificado como uma lista de arquivos de origem .go, mas tamb&eacute;m pode ser um caminho de importa&ccedil;&atilde;o, um caminho do sistema de arquivos ou um padr&atilde;o que corresponda a um único pacote conhecido, como em "go run ." ou "go run my/cmd".</p>
+
+						<p>Por padr&atilde;o, 'go run' executa o bin&aacute;rio compilado diretamente: 'a.out arguments ...'. Se o flag -exec &eacute; dado, 'go run' invoca o bin&aacute;rio usando xprog:</p>
+
+						<p>Se o flag -exec n&atilde;o for fornecido, GOOS ou GOARCH for diferente do padr&atilde;o do sistema e um programa chamado go_$GOOS_$GOARCH_exec puder ser localizado no caminho de procura atual, 'go run' chamar&aacute; o bin&aacute;rio usando esse programa, por exemplo 'go_nacl_386_exec a.out arguments ...'. Isso permite a execu&ccedil;&atilde;o de programas compilados quando um simulador ou outro m&eacute;todo de execu&ccedil;&atilde;o estiver disponível.</p>
+
+						<p>O status de saída de Run n&atilde;o &eacute; o status de saída do bin&aacute;rio compilado.</p>
+
+						<p>Para mais informa&ccedil;ões sobre os sinalizadores de constru&ccedil;&atilde;o, consulte 'go help build'. Para mais informa&ccedil;ões sobre como especificar pacotes, consulte 'go help packages'.</p>
+
+						<p>Veja abaixo um exemplo:</p>
+
+<pre><code class="language-go">// testando println
+package main
+
+func main() {
+   println("Debugando meu sistema com println")
+}</code></pre>
+
+						<p>Go run:</p>
+
+<pre><code class="language-go">go run println.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">Debugando meu sistema com println</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_3">
+
+	  					<h3>Go Build</h3>
+
+	  					<p>Build compila os pacotes nomeados pelos caminhos de importa&ccedil;&atilde;o, junto com suas dependências, mas n&atilde;o instala os resultados.</p>
+
+	  					<p>Ao compilar pacotes, o build ignora os arquivos que terminam em '_test.go'.</p>
+
+	  					<p>O flag -o, permitido somente ao compilar um único pacote, for&ccedil;a a compila&ccedil;&atilde;o a gravar o execut&aacute;vel ou objeto resultante no arquivo de saída nomeado, em vez do comportamento padr&atilde;o descrito nos dois últimos par&aacute;grafos.</p>
+
+	  					<p>O flag -i instala os pacotes que s&atilde;o dependências do destino.</p>
+
+<pre><code class="language-go">$ go build [-o output] [-i] [build flags] [packages]</code></pre>
+
+						<p>Veja um exemplo:</p>
+
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Go Workshop 2.0")
+}</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">Go Workshop 2.0</code></pre>
+
+						<p>Compila&ccedil;&atilde;o normal</p>
+
+<pre><code class="language-go">go build -o hello hello.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">$ ls -lh 
+-rwxrwxr-x 1 root root **1,9M** jan 18 12:42 hello
+-rw-rw-r-- 1 root root   75 jan 17 12:04 hello.go
+</code></pre>
+
+						<p>Deixando o arquivo menor ap&oacute;s a compila&ccedil;&atilde;o</p>
+
+<pre><code class="language-go">go build -ldflags="-s -w" hello.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">$ ls -lh 
+-rwxrwxr-x 1 root root **1,3M** jan 18 12:42 hello
+-rw-rw-r-- 1 root root   75 jan 17 12:04 hello.go</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_4">
+
+	  					<h3>Go Install</h3>
+
+	  					<p>Instalar pacotes e dependências.</p>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">$ go install [-i] [build flags] [packages]</code></pre>
+
+						<p>Instale compila e instala os pacotes nomeados pelos caminhos de importa&ccedil;&atilde;o.</p>
+
+						<p>O <strong>flag -i</strong> tamb&eacute;m instala as dependências dos pacotes nomeados.</p>
+
+						<p>Para mais informa&ccedil;ões sobre os sinalizadores de constru&ccedil;&atilde;o, consulte 'go help build'. Para mais informa&ccedil;ões sobre como especificar pacotes, consulte 'go help packages'.</p>
+	  					
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_5">
+
+	  					<h3>Go Get</h3>
+
+	  					<p>O comando 'go get' muda o comportamento dependendo se o comando go est&aacute; sendo executado no modo ciente de m&oacute;dulo ou no modo GOPATH herdado. Este texto de ajuda, acessível como 'go help module-get', mesmo no modo GOPATH legado, descreve o 'go get' enquanto ele opera no modo ciente de m&oacute;dulo.</p>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">$ go get [-d] [-m] [-u] [-v] [-insecure] [build flags] [packages]</code></pre>
+
+						<p>Obtenha downloads dos pacotes nomeados pelos caminhos de importa&ccedil;&atilde;o, junto com suas dependências. Em seguida, instala os pacotes nomeados, como 'go install'.</p>
+
+						<p>Veja as bandeiras aceitas abaixo:</p>
+
+<pre><code class="language-go">O flag -d instrui a parar ap&oacute;s o download dos pacotes; isto &eacute;, instrui n&atilde;o instalar os pacotes.
+
+O flag -f, v&aacute;lido apenas quando -u est&aacute; energizado, for&ccedil;a get -u para n&atilde;o verificar se cada pacote foi retirado do reposit&oacute;rio de controle de origem implícito por seu caminho de importa&ccedil;&atilde;o. Isso pode ser útil se a fonte for uma bifurca&ccedil;&atilde;o local do original.
+
+O flag -fix instrui para executar a ferramenta de corre&ccedil;&atilde;o nos pacotes baixados antes de resolver dependências ou construir o c&oacute;digo.
+
+O flag -insecure permite buscar a partir de reposit&oacute;rios e resolver domínios personalizados usando esquemas inseguros, como HTTP. Use com cuidado.
+
+O flag -t instrui tamb&eacute;m a baixar os pacotes necess&aacute;rios para construir os testes para os pacotes especificados.
+
+O flag -u instrui a usar a rede para atualizar os pacotes nomeados e suas dependências. Por padr&atilde;o, get usa a rede para verificar os pacotes ausentes, mas n&atilde;o os utiliza para procurar atualiza&ccedil;ões nos pacotes existentes.
+
+O flag -v permite progresso detalhado e saída de depura&ccedil;&atilde;o.</code></pre>
+
+						<p>Exemplos:</p>
+
+<pre><code class="language-go">$ go get -v github.com/guptarohit/asciigraph
+$ go get -u github.com/mxk/go-sqlite
+$ go get -v github.com/google/uuid
+$ go get -v github.com/sirupsen/logru</code></pre>
+	  					
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_6">
+
+	  					<h3>Go Mod</h3>
+
+	  					<p>Um m&oacute;dulo &eacute; uma cole&ccedil;&atilde;o de pacotes Go relacionados. M&oacute;dulos s&atilde;o a unidade de intercâmbio de c&oacute;digo-fonte e controle de vers&atilde;o. O comando go tem suporte direto para trabalhar com m&oacute;dulos, incluindo grava&ccedil;&atilde;o e resolu&ccedil;&atilde;o de dependências em outros m&oacute;dulos. Os m&oacute;dulos substituem a antiga abordagem baseada em GOPATH para especificar quais arquivos de origem s&atilde;o usados em uma determinada compila&ccedil;&atilde;o.</p>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">$ go mod <command> [arguments]</code></pre>
+
+						<p>Um m&oacute;dulo &eacute; definido por uma &aacute;rvore de arquivos de c&oacute;digo-fonte Go com um arquivo go.mod no diret&oacute;rio-raiz da &aacute;rvore. O diret&oacute;rio que cont&eacute;m o arquivo <strong>go.mod</strong> &eacute; chamado de raiz do m&oacute;dulo. Normalmente, a raiz do m&oacute;dulo tamb&eacute;m corresponder&aacute; a uma raiz de reposit&oacute;rio de c&oacute;digo-fonte (mas, em geral, n&atilde;o precisa). O m&oacute;dulo &eacute; o conjunto de todos os pacotes Go na raiz do m&oacute;dulo e seus subdiret&oacute;rios, mas excluindo sub&aacute;rvores com seus pr&oacute;prios arquivos go.mod.</p>
+
+						<p>O "caminho do m&oacute;dulo" &eacute; o prefixo do caminho de importa&ccedil;&atilde;o correspondente à raiz do m&oacute;dulo. O arquivo go.mod define o caminho do m&oacute;dulo e lista as versões específicas de outros m&oacute;dulos que devem ser usados ao resolver importa&ccedil;ões durante uma constru&ccedil;&atilde;o, fornecendo seus caminhos e versões de m&oacute;dulo.</p>
+
+						<p>Por exemplo, este go.mod declara que o diret&oacute;rio que o cont&eacute;m &eacute; a raiz do m&oacute;dulo com o caminho example.com/m, e tamb&eacute;m declara que o m&oacute;dulo depende de versões específicas de golang.org/x/text e gopkg.in/yaml.v2:</p>
+
+<pre><code class="language-go">$ go mod init github.com/user/gomyproject
+
+require (
+  golang.org/x/text v0.3.0
+  gopkg.in/yaml.v2 v2.1.0
+)</code></pre>
+
+						<p>O arquivo go.mod tamb&eacute;m pode especificar substitui&ccedil;ões e versões excluídas que s&oacute; se aplicam ao construir o m&oacute;dulo diretamente; eles s&atilde;o ignorados quando o m&oacute;dulo &eacute; incorporado em uma constru&ccedil;&atilde;o maior. Para mais informa&ccedil;ões sobre o arquivo go.mod, consulte 'go help go.mod'.</p>
+
+						<p>Para iniciar um novo m&oacute;dulo, basta criar um arquivo go.mod na raiz da &aacute;rvore de diret&oacute;rios do m&oacute;dulo, contendo apenas uma instru&ccedil;&atilde;o do m&oacute;dulo. O comando 'go mod init' pode ser usado para fazer isso:</p>
+
+<pre><code class="language-go">$ go mod init github.com/user/gomyproject</code></pre>
+
+						<p>Em um projeto que j&aacute; utiliza uma ferramenta de gerenciamento de dependências existente, como <strong>godep, glide ou dep, o 'go mod init'</strong> tamb&eacute;m incluir&aacute; instru&ccedil;ões requeridas que correspondam à configura&ccedil;&atilde;o existente.</p>
+
+						<p>Uma vez que o arquivo go.mod existe, nenhuma etapa adicional &eacute; necess&aacute;ria: comandos como <strong>'go build', 'go test' ou at&eacute; 'go list'</strong> adicionar&atilde;o automaticamente novas dependências conforme necess&aacute;rio para satisfazer as importa&ccedil;ões.</p>
+
+						<p>Os comandos s&atilde;o:</p>
+
+<pre><code class="language-go">download    baixar m&oacute;dulos no cache local
+edit        editar go.mod de ferramentas ou scripts
+graph       gr&aacute;fico de requisitos do m&oacute;dulo de impress&atilde;o
+init        inicializar novo m&oacute;dulo no diret&oacute;rio atual
+tidy        adicionar faltando e remover m&oacute;dulos n&atilde;o utilizados
+vendor      fazer c&oacute;pia -------vendida------- de dependências
+verify      verificar dependências esperavam conteúdo
+why         explicar por que pacotes ou m&oacute;dulos s&atilde;o necess&aacute;rios</code></pre>
+
+						<p>Use "go help mod" para mais informa&ccedil;ões sobre um comando.</p>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_7">
+
+	  					<h3>Go Mod Init</h3>
+
+	  					<p>Inicializar novo m&oacute;dulo no diret&oacute;rio atual.</p>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">$ go mod init [module]</code></pre>
+
+						<p>Init inicializa e grava um novo <strong>go.mod</strong> no diret&oacute;rio atual, criando, na verdade, um novo m&oacute;dulo com raiz no diret&oacute;rio atual. O arquivo go.mod n&atilde;o deve existir. Se possível, o init ir&aacute; adivinhar o caminho do m&oacute;dulo a partir dos coment&aacute;rios de importa&ccedil;&atilde;o (consulte 'go help importpath') ou da configura&ccedil;&atilde;o do controle de vers&atilde;o. Para substituir essa suposi&ccedil;&atilde;o, forne&ccedil;a o caminho do m&oacute;dulo como um argumento.</p>
+
+<pre><code class="language-go">$ go mod init github.com/user/gomyproject2
+
+require (
+  github.com/dgrijalva/jwt-go v3.2.0+incompatible
+  github.com/didip/tollbooth v4.0.0+incompatible
+  github.com/go-sql-driver/mysql v1.4.1
+  github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
+  golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc
+  golang.org/x/time v0.0.0-20181108054448-85acf8d2951c // indirect
+)</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_8">
+
+	  					<h3>Go Mod Vendor</h3>
+
+	  					<p>O comando go mod mod vendor baixar&aacute; todas as dependências para o diret&oacute;rio "vendor". Ao usar o go mod mod, os pacotes n&atilde;o est&atilde;o no seu diret&oacute;rio.</p>
+
+<pre><code class="language-go">$ cd gomyproject2
+$ go mod vendor</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">$ ls -lh vendor
+total 8,0K
+drwxrwxr-x 3 root root 4,0K jan 27 01:47 github.com
+-rw-rw-r-- 1 root root  137 jan 27 01:47 modules.txt</code></pre>
+	  					
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_9">
+
+	  					<h3>GO111MODULE</h3>
+
+	  					<p>O Go 1.11 inclui suporte preliminar para os m&oacute;dulos Go, incluindo um novo comando 'go get' que reconhece os m&oacute;dulos. N&oacute;s pretendemos continuar revisando este suporte, preservando a compatibilidade, at&eacute; que ele possa ser declarado oficial (n&atilde;o mais preliminar), e ent&atilde;o, em um ponto posterior, podemos remover o suporte para o trabalho no GOPATH e o antigo comando 'go get'.</p>
+
+	  					<p>A maneira mais r&aacute;pida de aproveitar o novo suporte ao m&oacute;dulo Go 1.11 &eacute; verificar seu reposit&oacute;rio em um diret&oacute;rio fora de GOPATH/src, criar um arquivo go.mod (descrito na pr&oacute;xima se&ccedil;&atilde;o) e executar comandos go a partir desse arquivo &aacute;rvore.</p>
+
+	  					<p>Para um controle mais refinado, o suporte a m&oacute;dulos no Go 1.11 respeita uma vari&aacute;vel de ambiente tempor&aacute;ria, GO111MODULE, que pode ser definida como um dos três valores de string: off, on ou auto (o padr&atilde;o). Se GO111MODULE=off, ent&atilde;o o comando go nunca usa o novo suporte ao m&oacute;dulo. Em vez disso, ele procura nos diret&oacute;rios de fornecedores e no GOPATH para localizar dependências; agora nos referimos a isso como "modo GOPATH". Se GO111MODULE=on, ent&atilde;o o comando go requer o uso de m&oacute;dulos, nunca consultando o GOPATH. N&oacute;s nos referimos a isso como o comando sendo ciente do m&oacute;dulo ou em execu&ccedil;&atilde;o no "modo de reconhecimento de m&oacute;dulo". Se GO111MODULE=auto ou n&atilde;o estiver definido, o comando go ativa ou desativa o suporte a m&oacute;dulos com base no diret&oacute;rio atual. O suporte a m&oacute;dulos &eacute; ativado somente quando o diret&oacute;rio atual est&aacute; fora de GOPATH/src e ele cont&eacute;m um arquivo go.mod ou est&aacute; abaixo de um diret&oacute;rio contendo um arquivo go.mod.</p>
+
+	  					<p>No modo ciente de m&oacute;dulo, GOPATH n&atilde;o define mais o significado de importa&ccedil;ões durante uma compila&ccedil;&atilde;o, mas ainda armazena dependências baixadas (em GOPATH/pkg/mod) e comandos instalados (em GOPATH/bin, a menos que GOBIN esteja definido).</p>
+
+	  					<p>Confira abaixo como usamos o comando:</p>
+
+<pre><code class="language-go">$ GO111MODULE=on go run myprogram.go
+$ GO111MODULE=on go build myprogram.go</code></pre>
+
+						<p>Quando nosso projeto n&atilde;o est&aacute; em nosso <strong>$GOPATH</strong> n&atilde;o &eacute; necess&aacute;rio usar <strong>GO111MODULE</strong>, mas quando nosso projeto est&aacute; em <strong>$GOPATH</strong> e n&oacute;s queremos usar <strong>"go mod"</strong> n&oacute;s precisamos informar isto ao compilador usando <strong>GO111MODULE</strong>...</p>
+	  					
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec23_10">
+
+	  					<h3>Go Test</h3>
+
+	  					<p>Pacotes de teste</p>
+
+	  					<p>Uso:</p>
+
+<pre><code class="language-go">$ go test [build/test flags] [packages] [build/test flags & test binary flags]</code></pre>
+
+						<p>O teste Go automatiza o teste dos pacotes nomeados pelos caminhos de importa&ccedil;&atilde;o. Imprime um resumo dos resultados do teste no formato:</p>
+
+<pre><code class="language-go">=== RUN   TestWhatever
+--- PASS: TestWhatever (0.00s)
+PASS
+ok    command-line-arguments  0.001s</code></pre>
+
+						<p>O pacote de teste &eacute; executado lado a lado com o comando go test. O teste de pacote deve ter o sufixo "_test.go". Podemos dividir os testes em v&aacute;rios arquivos seguindo esta conven&ccedil;&atilde;o. Por exemplo: "myprog1_test.go" e "myprog2_test.go".</p>
+
+						<p>Devemos colocar nossas fun&ccedil;ões de teste nesses arquivos de teste.</p>
+
+						<p>Cada fun&ccedil;&atilde;o de teste &eacute; uma fun&ccedil;&atilde;o pública exportada cujo nome come&ccedil;a com <strong>"Test"</strong>, aceita um ponteiro para um objeto <strong>testing.T</strong> e n&atilde;o retorna nada. Como isso:</p>
+
+						<p>Exemplo um / myprog1_test:</p>
+
+<pre><code class="language-go">package main
+
+import "testing"
+
+func TestWhatever(t *testing.T) {
+    // Teste aqui
+}</code></pre>
+
+<pre><code class="language-go">$ go test -v</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">=== RUN   TestWhatever
+--- PASS: TestWhatever (0.00s)
+PASS
+ok    command-line-arguments  0.001s</code></pre>
+
+						<p>O objeto T fornece v&aacute;rios m&eacute;todos que podemos usar para indicar falhas ou erros de log.</p>
+
+						<p>Exemplo dois / myprog2_test:</p>
+
+<pre><code class="language-go">package main
+
+import "testing"
+
+func TestSum(t *testing.T) {
+  x := 1 + 1
+  if x != 11 { // for&ccedil;ando o erro
+    t.Error("Erro! 1 + 1 n&atilde;o &eacute; igual a 2, recebi", x)
+  }
+}</code></pre>
+
+<pre><code class="language-go">$ go test -v</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">=== RUN   TestSum
+-- FAIL: TestSum (0.00s)
+    myprog1_test.go:12: Erro! 1 + 1 n&atilde;o &eacute; igual a 2, recebi 2
+FAIL
+FAIL  command-line-arguments  0.001s</code></pre>
+
+						<p>Neste exemplo, faremos um exame como seria em nossos projetos.</p>
+
+						<p>Neste programa vou passar parâmetro em tempo de compila&ccedil;&atilde;o ou em nossa execu&ccedil;&atilde;o para facilitar e tamb&eacute;m servir como exemplo o uso de <strong>"ldflags"</strong> que podemos usar em **go run -ldflags** e <strong>go build -ldflags</strong></p>
+
+						<p>De um check-in em nosso c&oacute;digo abaixo / main.go:</p>
+
+<pre><code class="language-go">import "strconv"
+
+import (
+  "github.com/jeffotoni/goworkshopdevops/examples/tests/pkg/math"
+)
+
+var (
+  x, y   string
+  xi, yi int
+)
+
+func init() {
+  xi, _ = strconv.Atoi(x)
+  yi, _ = strconv.Atoi(y)
+}
+
+func main() {
+  println(math.Sum(xi, yi))
+}</code></pre>
+					
+						<p>Agora temos uma fun&ccedil;&atilde;o Sum em um pacote que criamos em <strong>pkg/math/sum.go</strong></p>
+
+<pre><code class="language-go">package math
+
+func Sum(x, y int) int {
+  return x + y
+}</code></pre>
+
+						<p>Criamos nosso arquivo de teste em <strong>pkg/math/sum_test.go</strong></p>
+
+<pre><code class="language-go">package math
+
+import "testing"
+
+func TestSum(t *testing.T) {
+  type args struct {
+    x int
+    y int
+  }
+  tests := []struct {
+    name string
+    args args
+    want int
+  }{
+    // TODO: adicionar casos de teste
+    {"test_1: ", args{2, 2}, 4},
+    {"test_2: ", args{-2, 6}, 4},
+    {"test_3: ", args{-4, 8}, 4},
+    {"test_4: ", args{5, 7}, 12},
+    {"test_5: ", args{8, 8}, 15}, // for&ccedil;ando o erro
+  }
+  for _, tt := range tests {
+    t.Run(tt.name, func(t *testing.T) {
+      if got := Sum(tt.args.x, tt.args.y); got != tt.want {
+        t.Errorf("Sum() = %v, want %v", got, tt.want)
+      }
+    })
+  }
+}</code></pre>
+
+<pre><code class="language-go">$ cd pkg/math/
+$ go test -v</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">=== RUN   TestSum
+=== RUN   TestSum/test_1:_
+=== RUN   TestSum/test_2:_
+=== RUN   TestSum/test_3:_
+=== RUN   TestSum/test_4:_
+=== RUN   TestSum/test_5:_
+--- FAIL: TestSum (0.00s)
+    --- PASS: TestSum/test_1:_ (0.00s)
+    --- PASS: TestSum/test_2:_ (0.00s)
+    --- PASS: TestSum/test_3:_ (0.00s)
+    --- PASS: TestSum/test_4:_ (0.00s)
+    --- FAIL: TestSum/test_5:_ (0.00s)
+        sum_test.go:29: Sum() = 16, want 15
+FAIL
+exit status 1
+FAIL  github.com/jeffotoni/goworkshopdevops/examples/tests/pkg/pkg/math  0.001s</code></pre>
+
+						<p>Converte para json a saída dos testes.</p>
+
+<pre><code class="language-go">$ go test -v -json</code></pre>
+
+						<p>Verifique sua saída na tela do seu terminal para ver a saída do json.</p>
+
+						<hr />
+
+						<p>Agora que salvamos nosso pkg / math / sum.go, vamos fazer um main.go fazendo a chamada neste pacote. Mas primeiro vamos executar o go mod para gerenciar nossos pacotes e versões corretamente.</p>
+
+						<p>Verifique o comando abaixo:</p>
+
+<pre><code class="language-go">$ go mod init github.com/jeffotoni/goworkshopdevops/examples/tests/pkg</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">go: finding github.com/jeffotoni/goworkshopdevops/examples/tests/pkg/math latest
+go: finding github.com/jeffotoni/goworkshopdevops/examples/tests latest
+go: finding github.com/jeffotoni/goworkshopdevops/examples latest
+go: finding github.com/jeffotoni/goworkshopdevops latest
+go: downloading github.com/jeffotoni/goworkshopdevops v0.0.0-20190127023912-a2fa53299867
+0</code></pre>
+
+						<p>Agora podemos dar <strong>build</strong> ou <strong>run</strong> em nosso <strong>main.go</strong>. Vamos rodar para rodar usando o sinalizador <strong>"-ldflags"</strong> para passar o parâmetro para o nosso c&oacute;digo em tempo de compila&ccedil;&atilde;o.</p>
+
+<pre><code class="language-go">$ go run -ldflags "-X main.x=2 -X main.y=3" main.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">5</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ go run -ldflags "-X main.x=7 -X main.y=3" main.go</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">10</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26">
+	  					
+	  					<h2>Vamos reforçar nossos conhecimentos em: Json / Marsha, Unmarshal + structs</h2>
+
+	  				</div>
+
+	  				<div id="sec26_1">
+	  					
+	  					<h3>Json</h3>
+
+	  					<p>O pacote json implementa a codificação e decodificação de JSON, conforme definido no RFC 7159 . O mapeamento entre os valores JSON e Go é descrito na documentação das funções Marshal e Unmarshal.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_2">
+	  					
+	  					<h3>Introdução</h3>
+
+	  					<p>JSON (JavaScript Object Notation) é um formato simples de troca de dados. Sintacticamente assemelha-se aos objetos e listas de JavaScript. É mais comumente usado para comunicação entre back-ends da web e programas JavaScript em execução no navegador, mas é usado em muitos outros lugares também. Sua home page, json.org, fornece uma definição clara e concisa do padrão.</p>
+
+	  					<p>Com o pacote json , é muito fácil ler e gravar dados JSON de seus programas Go.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_3">
+	  					
+	  					<h3>Json marechal codificar</h3>
+
+	  					<p>Marshal retorna a codificação JSON de v .</p>
+
+	  					<p>Marshal percorre o valor v recursivamente. Se um valor encontrado implementar a interface Marshaler e não for um ponteiro nulo, Marshal chama seu método MarshalJSON para produzir JSON. Se nenhum método MarshalJSON estiver presente, mas o valor implementar encoding.TextMarshaler, Marshal chama seu método MarshalText e codifica o resultado como uma string JSON.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type ApiLogin struct {
+	Name string `json:"name"`
+	Cpf  string `json:"cpf"`
+}
+
+func main() {
+
+	a := ApiLogin{"Jefferson", "033.343.434-89"}
+	fmt.Println(a)
+
+	m, err := json.Marshal(a)
+	if err != nil {
+		log.Println(err)
+	}
+	// show bytes
+	fmt.Println(m)
+
+	// show string json
+	fmt.Println(string(m))
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_4">
+	  					
+	  					<h3>Json MarshalIndent</h3>
+
+	  					<p>MarshalIndent é como Marshal, mas aplica o recuo para formatar a saída. Cada elemento JSON na saída começará em uma nova linha que começa com prefixo seguido por uma ou mais cópias de recuo de acordo com o aninhamento de recuo.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type ApiLogin struct {
+	Name string `json:"name"`
+	Cpf  string `json:"cpf"`
+}
+
+func main() {
+
+	a := ApiLogin{"Jefferson", "033.343.434-89"}
+	// improving output for json format viewing
+	json, err := json.MarshalIndent(a, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(json))
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_5">
+	  					
+	  					<h3>Opção Omitempty</h3>
+
+	  					<p>A opção "omitempty" especifica que o campo deve ser omitido da codificação se o campo tiver um valor vazio, definido como falso, 0, um ponteiro nulo, um valor de interface nulo e qualquer matriz, fatia, mapa ou cadeia vazia.</p>
+
+	  					<p>O pacote json acessa apenas os campos exportados de tipos de struct (aqueles que começam com uma letra maiúscula). Portanto, somente os campos exportados de uma estrutura estarão presentes na saída JSON.</p>
+
+	  					<p>Neste exemplo, trabalhamos com ponteiros para referenciar a estrutura dentro de outra estrutura, e outro ponto é que declaramos a estrutura dentro da própria estrutura. Com isso, temos maneiras diferentes de inicializar e preencher os campos de nossas estruturas. Vamos ver como isso funciona? Confira o exemplo abaixo.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Login struct {
+	// Field appears in JSON as key "login".
+	Login string `json:"login"`
+
+	// Field appears in JSON as key "email" and
+	// the field is omitted from the object if its value is empty,
+	// as defined above.
+	Email string `json:"email,omitempty"`
+
+	// Field appears in JSON as key "nick" (the default), but
+	// the field is skipped if empty.
+	// Note the leading comma.
+	Nick string `json:",omitempty"`
+
+	// Field is ignored by this package.
+	Level int `json:"-"`
+
+	// Field appears in JSON as key "-".
+	LastEmail string `json:"-,"`
+}
+
+func main() {
+
+	l := Login{Login: "Austin", Email: "austin@go.com", Nick: 
+	 "", Level: 1000, LastEmail: "austin@gmail.com"}
+	fmt.Println(l)
+
+	m, err := json.Marshal(l)
+	if err != nil {
+		log.Println(err)
+	}
+
+	fmt.Println(string(m))
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_6">
+	  					
+	  					<h3>Json NewDecoder</h3>
+
+<pre><code class="language-go">json.NewEncoder(r.Body).Encode(&d)</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec26_7">
+	  					
+	  					<h3>Interface vazia</h3>
+
+	  					<p>A interface{} (interface vazia) descreve uma interface com métodos zero. Cada tipo Go implementa pelo menos zero métodos e, portanto, satisfaz a interface vazia.</p>
+
+	  					<p>A interface vazia serve como um tipo de contêiner geral:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	var i interface{}
+
+	i = "Go Workshop 2.0"
+	i = 2019
+	i = 9.5
+
+	r := i.(float64)
+	fmt.Println("Area do circulo: ", math.Pi*r*r)
+
+	switch v := i.(type) {
+	case int:
+		fmt.Println("Int * 2=", v*2)
+	case float64:
+		fmt.Println("Float64/2=", v/2)
+	case string:
+		h := len(v) / 2
+		fmt.Println("Quantidade/2 -> v[h:] + v[:h]=", v[h:]+v[:h])
+	default:
+		// i isn't one of the types above
+	}
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28">
+	  					
+	  					<h2>Construindo APIs com net/http</h2>
+
+	  				</div>
+
+	  				<div id="sec28_1">
+	  					
+	  					<h3>Introdu&ccedil;&atilde;o http</h3>
+
+	  					<p>Agora chegamos à melhor parte, colocamos em prática tudo o que aprendemos. Vamos conhecer o pacote net/http como um dos pacotes mais poderosos do Go, existem muitas especulações sobre ele, mas nós realmente faremos o nosso melhor naquilo que ele oferece com os recursos que ele oferece. Existem muitas implementações na net/http, várias rotas, frameworks, libs todas para minimizar o trabalho e agilizar várias tarefas ao codificar nossas apis. Nosso objetivo é criar APIs nativas.</p>
+
+	  					<p>Tudo em Go segue esse modelo, tem lib por muito, e quanto mais você dominar a linguagem, mais você terá o hábito de escolher melhor as bibliotecas ou desenvolver suas próprias bibliotecas. Vamos começar desenvolvendo nosso servidor de API, para que possamos consumi-lo mais tarde. O APIS como um servidor pode ser feito de várias maneiras, seja construindo o APIS no <strong>rEST, GraphQL, SOAP, XML-RPC</strong> e várias outras formas de comunicação, como <strong>RPC, Socket ou Websocket</strong>.</p>
+
+	  					<p>Temos uma biblioteca poderosa e vasta, tudo que temos em <strong>C ou C++</strong> está em <strong>Go melhorado</strong>. Todo pacote <strong>net/http</strong> está trabalhando no Goroutine, este é um dos pilares do <a href="https://golang.org/pkg/net/http/" target="_blank">net/http</a>.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_2">
+	  					
+	  					<h3>Type Handler</h3>
+
+	  					<p>Um manipulador responde a uma solicitação HTTP.</p>
+
+	  					<p>ServeHTTP deve escrever cabeçalhos de resposta e dados para o ResponseWriter e, em seguida, retornar. Retornando sinais de que o pedido está finalizado; não é válido usar o ResponseWriter ou ler o Request.Body após ou simultaneamente com a conclusão da chamada ServeHTTP.</p>
+
+	  					<p>Depois de implementado, o http.Handler pode ser passado para http.ListenAndServe, que chamará o método ServeHTTP em todas as solicitações recebidas. O http.Request contém todas as informações relevantes sobre uma solicitação http de entrada que está sendo atendida pelo seu http.Handler.</p>
+
+<pre><code class="language-go">type Handler interface {
+        ServeHTTP(ResponseWriter, *Request)
+}</code></pre>
+
+	  					<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type pingHandler struct{}
+
+func (h pingHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Go Workshop 2.0 for Golang simple %s\n", r.URL.Path)
+}
+
+func main() {
+	log.Printf("\nServer run 8080\n")
+	err := http.ListenAndServe(":8080", pingHandler{})
+	log.Fatal(err)
+}</code></pre>
+
+						<p>Execute o curl:</p>
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/v1/api/ping
+$ curl -i -Xget localhost:8080
+</code></pre>
+
+						<p>O http.ResponseWriter é a interface através da qual você pode responder ao pedido. Ele implementa a interface io.Writer, então você pode usar métodos como fmt.Fprintf para escrever uma string formatada como o corpo da resposta, ou como io.Copy para escrever o conteúdo de um arquivo (ou qualquer outro io.Reader). O código de resposta pode ser definido antes de você começar a gravar dados usando o método WriteHeader.</p>
+
+						<p>O pacote http da Go transformou-se em uma das minhas coisas favoritas sobre a linguagem de programação Go. Inicialmente parece ser algo complexo, mas na realidade pode ser dividido em alguns componentes simples que são extremamente flexíveis em como eles podem ser usados.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_3">
+
+	  					<h3>Type Handlerfunc</h3>
+
+	  					<p>O tipo HandlerFunc é um adaptador para permitir o uso de funções comuns como manipuladores HTTP. Se f é uma função com a assinatura apropriada, HandlerFunc (f) é um manipulador que chama f.</p>
+
+	  					<p>Muitas vezes, definir um tipo completo para implementar a interface http.Handler é um pouco exagerado, especialmente para funções ServeHTTP extremamente simples como a acima. O pacote http fornece uma função auxiliar, http.HandlerFunc, que envolve uma função que possui a assinatura func (w http.ResponseWriter, r http.Request), retornando um http.Handler que o chamará em todos os casos.</p>
+
+	  					<p>O seguinte se comporta exatamente como no exemplo anterior, mas usa http.HandlerFunc em vez de definir um novo tipo.</p>
+
+<pre><code class="language-go">type HandlerFunc func(ResponseWriter, *Request)</code></pre>
+
+						<p>Confira:</p>
+
+<pre><code class="language-go">handlerApiPing := http.HandlerFunc(Ping)</code></pre>
+
+						<p>Veja o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func main() {
+	handlerfunc := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Go Workshop 2.0 for Golang simple two %s\n", r.URL.Path)
+	})
+
+	log.Printf("\nServer run 8080\n")
+	err := http.ListenAndServe(":8080", handlerfunc)
+	log.Fatal(err)
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_4">
+	  					
+	  					<h3>Func http Handlefunc</h3>
+
+	  					<p>HandleFunc registra a função do manipulador para o padrão fornecido no DefaultServeMux. A documentação do ServeMux explica como os padrões são correspondidos.</p>
+
+<pre><code class="language-go">func HandleFunc(pattern string, handler func(ResponseWriter, *Request))</code></pre>				
+						<p>Confira os exemplos abaixo:</p>
+
+<pre><code class="language-go">http.HandleFunc("/v1/api/ping", pingHandler)</code></pre>
+
+<pre><code class="language-go">http.HandleFunc("/v1/api/ping", func(w http.ResponseWriter, req *http.Request){})</code></pre>
+
+<pre><code class="language-go">package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		w.Write([]byte("\nGo Workshop 2.0 BH for Golang HandleFunc!"))
+	}
+
+	// handleFunc
+	http.HandleFunc("/v1/api/ping", pingHandler)
+	http.HandleFunc("/v1/api/ping2", pingHandler)
+	http.HandleFunc("/v1/api/ping3", pingHandler)
+
+	// show run server
+	log.Printf("\nServer run 8080\n")
+
+	// Listen
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_5">
+	  					
+	  					<h3>Func http Handle</h3>
+
+	  					<p>Handle registra o manipulador para o padrão fornecido no DefaultServeMux.</p>
+
+<pre><code class="language-go">func Handle(pattern string, handler Handler)</code></pre>
+
+	  					<p>Confira o exemplo abaixo:</p>
+
+<pre><code class="language-go">http.Handle("/v1/api/ping", http.HandlerFunc(Ping))</code></pre>
+
+<pre><code class="language-go">package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		w.Write([]byte("\nGo Workshop 2.0 BH for Golang Handle tree!"))
+	}
+
+	// Handle and recive http.HandlerFunc
+	http.Handle("/v1/api/ping", http.HandlerFunc(pingHandler))
+	http.Handle("/v1/api/ping2", http.HandlerFunc(pingHandler))
+	http.Handle("/v1/api/ping3", http.HandlerFunc(pingHandler))
+	// http.Handle("/v1/api/ping", pingHandler) // error
+
+	// show run
+	log.Printf("\nServer run 8080\n")
+
+	// Listen
+	// log.Fatal(http.ListenAndServe(":8080", http.HandlerFunc(pingHandler))) ok
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}</code></pre>
+
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_6">
+
+	  					<h3>Func http Error</h3>
+
+	  					<p>Erro ao responder à solicitação com a mensagem de erro especificada e o código HTTP. Não termina o pedido; o chamador deve garantir que nenhuma outra gravação seja feita para w. A mensagem de erro deve ser texto simples.</p>
+
+<pre><code class="language-go">func Error(w ResponseWriter, error string, code int)</code></pre>
+
+	  					<p>Confira o exemplo abaixo:</p>
+
+<pre><code class="language-go">json := `{"status":"error", "msg":"method not supported, only POST"}`
+http.Error(w, json, http.StatusUnauthorized)</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_7">
+
+	  					<h3>Constants Common HTTP Methods</h3>
+
+	  					<p>Salvo indicação em contrário, estes são definidos no RFC 7231 seção 4.3.</p>
+
+<pre><code class="language-go">const (
+        MethodGet     = "GET"
+        MethodHead    = "HEAD"
+        MethodPost    = "POST"
+        MethodPut     = "PUT"
+        MethodPatch   = "PATCH" // RFC 5789
+        MethodDelete  = "DELETE"
+        MethodConnect = "CONNECT"
+        MethodOptions = "OPTIONS"
+        MethodTrace   = "TRACE"
+)</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_8">
+
+	  					<h3>Type ServeMux</h3>
+
+	  					<p>Salvo indicação em contrário, estes são definidos no RFC 7231 seção 4.3.</p>
+
+<pre><code class="language-go">const (
+        MethodGet     = "GET"
+        MethodHead    = "HEAD"
+        MethodPost    = "POST"
+        MethodPut     = "PUT"
+        MethodPatch   = "PATCH" // RFC 5789
+        MethodDelete  = "DELETE"
+        MethodConnect = "CONNECT"
+        MethodOptions = "OPTIONS"
+        MethodTrace   = "TRACE"
+)</code></pre>
+
+	  					<p><strong>Códigos de status HTTP</strong>, conforme registrados na IANA. Veja: <a href="https://httpstatuses.com/" target="_blank">https://httpstatuses.com/</a></p>
+
+<pre><code class="language-go">const (
+        StatusContinue           = 100 // RFC 7231, 6.2.1
+        StatusSwitchingProtocols = 101 // RFC 7231, 6.2.2
+        StatusProcessing         = 102 // RFC 2518, 10.1
+
+        StatusOK                   = 200 // RFC 7231, 6.3.1
+        StatusCreated              = 201 // RFC 7231, 6.3.2
+        StatusAccepted             = 202 // RFC 7231, 6.3.3
+        StatusNonAuthoritativeInfo = 203 // RFC 7231, 6.3.4
+        StatusNoContent            = 204 // RFC 7231, 6.3.5
+        StatusResetContent         = 205 // RFC 7231, 6.3.6
+        StatusPartialContent       = 206 // RFC 7233, 4.1
+        StatusMultiStatus          = 207 // RFC 4918, 11.1
+        StatusAlreadyReported      = 208 // RFC 5842, 7.1
+        StatusIMUsed               = 226 // RFC 3229, 10.4.1
+
+        StatusMultipleChoices  = 300 // RFC 7231, 6.4.1
+        StatusMovedPermanently = 301 // RFC 7231, 6.4.2
+        StatusFound            = 302 // RFC 7231, 6.4.3
+        StatusSeeOther         = 303 // RFC 7231, 6.4.4
+        StatusNotModified      = 304 // RFC 7232, 4.1
+        StatusUseProxy         = 305 // RFC 7231, 6.4.5
+
+        StatusTemporaryRedirect = 307 // RFC 7231, 6.4.7
+        StatusPermanentRedirect = 308 // RFC 7538, 3
+
+        StatusBadRequest                   = 400 // RFC 7231, 6.5.1
+        StatusUnauthorized                 = 401 // RFC 7235, 3.1
+        StatusPaymentRequired              = 402 // RFC 7231, 6.5.2
+        StatusForbidden                    = 403 // RFC 7231, 6.5.3
+        StatusNotFound                     = 404 // RFC 7231, 6.5.4
+        StatusMethodNotAllowed             = 405 // RFC 7231, 6.5.5
+        StatusNotAcceptable                = 406 // RFC 7231, 6.5.6
+        StatusProxyAuthRequired            = 407 // RFC 7235, 3.2
+        StatusRequestTimeout               = 408 // RFC 7231, 6.5.7
+        StatusConflict                     = 409 // RFC 7231, 6.5.8
+        StatusGone                         = 410 // RFC 7231, 6.5.9
+        StatusLengthRequired               = 411 // RFC 7231, 6.5.10
+        StatusPreconditionFailed           = 412 // RFC 7232, 4.2
+        StatusRequestEntityTooLarge        = 413 // RFC 7231, 6.5.11
+        StatusRequestURITooLong            = 414 // RFC 7231, 6.5.12
+        StatusUnsupportedMediaType         = 415 // RFC 7231, 6.5.13
+        StatusRequestedRangeNotSatisfiable = 416 // RFC 7233, 4.4
+        StatusExpectationFailed            = 417 // RFC 7231, 6.5.14
+        StatusTeapot                       = 418 // RFC 7168, 2.3.3
+        StatusMisdirectedRequest           = 421 // RFC 7540, 9.1.2
+        StatusUnprocessableEntity          = 422 // RFC 4918, 11.2
+        StatusLocked                       = 423 // RFC 4918, 11.3
+        StatusFailedDependency             = 424 // RFC 4918, 11.4
+        StatusUpgradeRequired              = 426 // RFC 7231, 6.5.15
+        StatusPreconditionRequired         = 428 // RFC 6585, 3
+        StatusTooManyRequests              = 429 // RFC 6585, 4
+        StatusRequestHeaderFieldsTooLarge  = 431 // RFC 6585, 5
+        StatusUnavailableForLegalReasons   = 451 // RFC 7725, 3
+
+        StatusInternalServerError           = 500 // RFC 7231, 6.6.1
+        StatusNotImplemented                = 501 // RFC 7231, 6.6.2
+        StatusBadGateway                    = 502 // RFC 7231, 6.6.3
+        StatusServiceUnavailable            = 503 // RFC 7231, 6.6.4
+        StatusGatewayTimeout                = 504 // RFC 7231, 6.6.5
+        StatusHTTPVersionNotSupported       = 505 // RFC 7231, 6.6.6
+        StatusVariantAlsoNegotiates         = 506 // RFC 2295, 8.1
+        StatusInsufficientStorage           = 507 // RFC 4918, 11.5
+        StatusLoopDetected                  = 508 // RFC 5842, 7.2
+        StatusNotExtended                   = 510 // RFC 2774, 7
+        StatusNetworkAuthenticationRequired = 511 // RFC 6585, 6
+)</code></pre>
+
+						<p>DefaultMaxHeaderBytes é o tamanho máximo permitido dos cabeçalhos em uma solicitação HTTP. Isso pode ser substituído, definindo <strong>Server.MaxHeaderBytes</strong>.</p>
+						
+<pre><code class="language-go">const DefaultMaxHeaderBytes = 1 << 20 // 1 MB</code></pre>
+
+						<p>DefaultMaxIdleConnsPerHost é o valor padrão de MaxIdleConnsPerHost de transporte.</p>
+						
+<pre><code class="language-go">const DefaultMaxIdleConnsPerHost = 2</code></pre>
+
+						<p>TimeFormat é o formato de hora a ser usado ao gerar tempos em cabeçalhos HTTP. É como o tempo.RFC1123 mas codifica GMT como o fuso horário. O momento que está sendo formatado deve estar em UTC para Format para gerar o formato correto.</p>
+
+						<p>Para analisar esse formato de hora, consulte ParseTime.</p>
+
+<pre><code class="language-go">const TimeFormat = "Mon, 02 Jan 2006 15:04:05 GMT"</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_8">
+
+	  					<h3>Type ServeMux</h3>
+
+	  					<p>O ServeMux é um multiplexador de solicitação HTTP. Ele corresponde a URL de cada solicitação recebida a uma lista de padrões registrados e chama o manipulador para o padrão que mais se aproxima do URL.</p>
+
+	  					<p>Os padrões nomeiam caminhos fixos e com raiz, como "/favicon.ico" ou subárvores com raiz, como "/images/" (observe a barra à direita). Padrões mais longos têm precedência sobre os mais curtos, de modo que, se houver manipuladores registrados para "/images/" e "/images/thumbnails/", o último manipulador será chamado para caminhos que iniciam "/images/thumbnails/" e o antigo receberá solicitações para qualquer outro caminho na subárvore "/images/".</p>
+
+	  					<p>Observe que, como um padrão que termina em uma barra nomeia uma subárvore com raiz, o padrão "/" corresponde a todos os caminhos não correspondidos por outros padrões registrados, não apenas à URL com o caminho == "/".</p>
+
+	  					<p>Se uma subárvore foi registrada e uma solicitação é recebida nomeando a raiz da subárvore sem sua barra final, o ServeMux redireciona essa solicitação para a raiz da subárvore (adicionando a barra à direita). Esse comportamento pode ser substituído por um registro separado para o caminho sem a barra final. Por exemplo, registrar "/images/" faz com que ServeMux redirecione uma solicitação para "/images" para "/images/", a menos que "/ images" tenha sido registrado separadamente.</p>
+
+	  					<p>Padrões podem, opcionalmente, começar com um nome de host, restringindo as correspondências aos URLs nesse host apenas. Os padrões específicos do host têm precedência sobre os padrões gerais, de modo que um manipulador pode se inscrever nos dois padrões "/ codesearch" e "codesearch.google.com/" sem assumir as solicitações de "<a href="http://www.google.com/" target="_blank">http://www.google.com/</a>.</p>
+
+	  					<p>O ServeMux também cuida da limpeza do caminho de solicitação de URL e do cabeçalho do Host, retirando o número da porta e redirecionando qualquer solicitação que contenha. ou .. elementos ou barras repetidas para um URL equivalente e mais limpo.</p>
+
+<pre><code class="language-go">type ServeMux struct {
+     // contains filtered or unexported fields
+}</code></pre>
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_9">
+	  					
+	  					<h3>Type NewServeMux</h3>
+
+	  					<p>O NewServeMux aloca e retorna um novo ServeMux.</p>
+
+<pre><code class="language-go">func NewServeMux() *ServeMux</code></pre>
+
+	  					<p>Confira:</p>
+
+<pre><code class="language-go">mux := http.NewServeMux()</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_10">
+	  					
+	  					<h3>Func ServeMux HandleFunc</h3>
+
+<pre><code class="language-go">func (mux *ServeMux) HandleFunc(pattern string, handler func(ResponseWriter, *Request))</code></pre>
+
+						<p>HandleFunc registra a função do manipulador para o padrão fornecido.</p>
+
+						<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func main() {
+
+	mux := http.NewServeMux()
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		w.Write([]byte("\nGo Workshop 2.0 for Golang mux HandleFunc!"))
+	}
+
+	// handleFunc
+	mux.HandleFunc("/v1/api/ping", pingHandler) // ok
+
+	mux.HandleFunc("/v1/api/ping2", http.HandlerFunc(pingHandler)) // ok
+
+	mux.HandleFunc("/v1/api/ping3", pingHandler) // ok
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprintln(w, "You're lost, go home Go Workshop 2.0!")
+	})
+
+	log.Printf("\nServer run 8080\n")
+	// Listen
+	log.Fatal(http.ListenAndServe(":8080", mux))
+}</code></pre>
+
+						<p>Executar cURL:</p>
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/</code></pre>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_11">
+	  					
+	  					<h3>Type ServeMux Handle</h3>
+
+	  					<p>Handle registra o manipulador para o padrão fornecido. Se um manipulador já existir para o padrão, lide com pânicos.</p>
+
+<pre><code class="language-go">func (mux *ServeMux) Handle(pattern string, handler Handler)</code></pre>
+
+						<p>Confira:</p>
+
+<pre><code class="language-go">mux := http.NewServeMux()
+mux.Handle("/v1/api/ping", http.HandlerFunc(Ping))</code></pre>
+
+<pre><code class="language-go">package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+
+	mux := http.NewServeMux()
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		w.Write([]byte("\nGo Workshop 2.0 for Golang mux Handle()!"))
+	}
+
+	// handlerFunc
+	mux.Handle("/v1/api/ping", http.HandlerFunc(pingHandler)) // ok
+	// mux.Handle("/v1/api/ping2", pingHandler) // error
+	// mux.Handle("/v1/api/ping", mux.HandlerFunc(pingHandler)) // error
+
+	// mux.Handle("/", func(w http.ResponseWriter, r *http.Request) {  // error
+	// 	w.WriteHeader(http.StatusNotFound)
+	// 	fmt.Fprintln(w, "You're lost, go home Go Workshop 2.0!")
+	// })
+
+	log.Printf("\nServer run 8080\n")
+	// Listen
+	log.Fatal(http.ListenAndServe(":8080", mux))
+}</code></pre>
+
+						<p>Executar cURL:</p>
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_12">
+
+	  					<h3>Func ListenAndServe</h3>
+	  					
+	  					<p>HandleFunc registra a função do manipulador para o padrão fornecido no DefaultServeMux. A documentação do ServeMux explica como os padrões são correspondidos.</p>
+
+	  					<p>O ListenAndServe escuta o endereço de rede TCP addr e, em seguida, chama o Servir com o manipulador para manipular solicitações em conexões de entrada. As conexões aceitas são configuradas para ativar keep-alives de TCP.</p>
+
+	  					<p>O manipulador é normalmente nulo, caso em que o DefaultServeMux é usado.</p>
+
+	  					<p>ListenAndServe sempre retorna um erro não nulo.</p>
+
+	  					<p>Confira nosso primeiro exemplo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"io"
+	"log"
+	"net/http"
+)
+
+func main() {
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "Go Workshop 2.0, Golang for Go Workshop 2.0!\n")
+	}
+
+	// handlerFunc
+	http.HandleFunc("/v1/api/ping", pingHandler)
+
+	// Listen
+	// log.Fatal(http.ListenAndServe(":8080", http.HandlerFunc(pingHandler))) ok
+	log.Fatal(http.ListenAndServe(":8080", nil)) // ok
+
+}</code></pre>
+
+						<p>Neste cenário apis, o programa está escutando na porta determinada pela função <strong>ListenAndServe</strong>, aguardando que as solicitações sejam recebidas para que possam responder às solicitações recebidas.</p>
+
+<pre><code class="language-go">$ curl -i -XPOST localhost:8080/v1/api/ping</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">HTTP/1.1 200 OK
+Date: Fri, 01 Feb 2019 17:01:23 GMT
+Content-Length: 29
+Content-Type: text/plain; charset=utf-8
+
+Go Workshop 2.0, Golang for Go Workshop 2.0!</code></pre>
+
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_13">
+	  					
+	  					<h3>Func ListenAndServeTLS</h3>
+
+	  					<p>ListenAndServeTLS atua de forma idêntica ao ListenAndServe, exceto que ele espera conexões HTTPS. Além disso, arquivos contendo um certificado e uma chave privada correspondente para o servidor devem ser fornecidos. Se o certificado for assinado por uma autoridade de certificação, o certFile deverá ser a concatenação do certificado do servidor, de quaisquer intermediários e do certificado da autoridade de certificação.</p>
+
+<pre><code class="language-go">func ListenAndServeTLS(addr, certFile, keyFile string, handler Handler) error</code></pre>
+
+						<p>Antes de ter que gerar as chaves, .pem ou .crt e o arquivo .key. Vamos gerar todos os openssl em execução.</p>
+
+						<p>Verifique os códigos abaixo:</p>
+
+<pre><code class="language-go"># generating .key and .csr
+$ openssl req -nodes -newkey rsa:2048 -keyout server.key -out server.csr -subj "/C=BR/ST=Minas/L=Belo Horizonte/O=s3wf Ltd./OU=IT/CN=localhost"
+
+# generating server .crt or .pem
+$ openssl x509 -req -sha256 -in server.csr -signkey server.key -out server.crt -days 365</code></pre>
+
+						<p>Em breve, geramos server.crt, server.csr, server.key.</p>
+
+						<p>Agora vamos para a nossa api abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"io"
+	"log"
+	"net/http"
+)
+
+var (
+	addr = ":443"
+)
+
+func main() {
+
+	http.HandleFunc("/v1/api/ping", func(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "Go Workshop 2.0, Golang for Go Workshop 2.0 TLS!\n")
+	})
+
+	// show
+	log.Printf("Server Run %s TLS / https://localhost%s", addr, addr)
+
+	// conf listen TLS
+	err := http.ListenAndServeTLS(addr, "server.crt", "server.key", nil)
+	log.Fatal(err)
+}</code></pre>
+
+						<p>Abaixo do mesmo código, no entanto, modificando o escute TLS usando http.HandlerFunc ()</p>
+
+						<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"io"
+	"log"
+	"net/http"
+)
+
+var (
+	addr = ":443"
+)
+
+func main() {
+
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "Go Workshop 2.0, Golang for Go Workshop 2.0 TLS!\n")
+	}
+
+	// show
+	log.Printf("Server Run %s TLS / https://localhost%s", addr, addr)
+
+	// conf listen TLS
+	err := http.ListenAndServeTLS(addr, "server.crt", "server.key", http.HandlerFunc(pingHandler))
+	log.Fatal(err)
+}
+
+// curl --insecure -i -XGET https://localhost:8443/v1/api/ping
+// curl -k -i -XGET https://localhost:8443/v1/api/ping</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl --insecure -i -XGET https://localhost:443/v1/api/ping
+or
+$ curl -k -i -XGET https://localhost:443/v1/api/ping</code></pre>
+
+						<p>Agora vamos usar algumas propriedades do pacote tls e vamos fazer uma configuração, já que nós já aprendemos o mux, vamos usá-lo também. No começo parece confuso, mas na verdade é simples, vamos dar uma olhada.</p>
+
+						<p>Veja o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"crypto/tls"
+	"io"
+	"log"
+	"net/http"
+)
+
+var (
+	addr = ":443"
+)
+
+func main() {
+
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/v1/api/ping",
+		func(w http.ResponseWriter, req *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			io.WriteString(w, "Go Workshop 2.0, Golang for Go Workshop 2.0 TLS MUX!\n")
+		})
+
+	cfg := &tls.Config{
+		MinVersion:               tls.VersionTLS12,
+		CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
+		PreferServerCipherSuites: true,
+		CipherSuites: []uint16{
+			tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+			tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+			tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
+			tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+		},
+	}
+
+	srv := &http.Server{
+		Addr:         addr,
+		Handler:      mux,
+		TLSConfig:    cfg,
+		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),
+	}
+
+	// show
+	log.Printf("Server Run %s TLS / https://localhost%s", addr, addr)
+
+	// conf listen TLS
+	err := srv.ListenAndServeTLS("server.crt", "server.key")
+	log.Fatal(err)
+}
+
+// curl --insecure -i -XGET https://localhost:443/v1/api/ping
+// curl -k -i -XGET https://localhost:443/v1/api/ping</code></pre>
+
+						<p>Executar cURL:</p>
+
+<pre><code class="language-go">$ curl --insecure -i -XGET https://localhost:443/v1/api/ping
+or
+$ curl -k -i -XGET https://localhost:443/v1/api/ping</code></pre>
+
+						<hr />
+
+						<p>Agora vamos colocar algumas funções que farão a diferença quando rodarmos nossa API para alta performance, vamos tentar não usar a biblioteca fmt para gravar no monitor, vamos usar io e buff. Bem desempenho é algo absurdamente mais rápido.</p>
+
+						<p>De um verificado no código completo abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"bufio"
+	"io"
+	"log"
+	"net/http"
+	"os"
+)
+
+var (
+	addr = ":8080"
+)
+
+// write bufio to optimization
+func write(text string) {
+	// var writer *bufio.Writer
+	writer := bufio.NewWriter(os.Stdout)
+	writer.WriteString(text)
+	writer.Flush()
+}
+
+func main() {
+
+	// our function
+	pingHandler := func(w http.ResponseWriter, req *http.Request) {
+		json := `{"status":"success", "msg":"Go Workshop 2.0, Golang for Go Workshop 2.0!"}`
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.WriteHeader(http.StatusUnauthorized)
+		io.WriteString(w, json)
+	}
+
+	// handlerFunc
+	http.HandleFunc("/v1/api/ping", pingHandler)
+
+	// show
+	write("\033[0;33mServer Run Port " + addr + "\033[0m\n")
+
+	// Listen
+	log.Fatal(http.ListenAndServe(addr, nil))
+}</code></pre>
+
+<br />
+
+<pre><code class="language-go">// Go in action
+// @jeffotoni
+// 2019-01-01
+
+package main
+
+import (
+	"bufio"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"strings"
+	"time"
+)
+
+var (
+	addr = ":8080"
+)
+
+// show log on screen
+func logf(method, uri, nameHandle string, timeHandler time.Duration) {
+
+	expre := "\033[5m%s \033[0;103m%s\033[0m \033[0;93m%s\033[0m \033[1;44m%s\033[0m"
+	log.Printf(expre, method, uri, nameHandle, timeHandler)
+}
+
+// write bufio to optimization
+func write(text string) {
+	// var writer *bufio.Writer
+	writer := bufio.NewWriter(os.Stdout)
+	writer.WriteString(text)
+	writer.Flush()
+}
+
+func Ping(w http.ResponseWriter, r *http.Request) {
+
+	// start time
+	start := time.Now()
+
+	if http.MethodPost == strings.ToUpper(r.Method) {
+
+		json := `{"status":"success", "msg":"Go Workshop 2.0, Golang for Go Workshop 2.0!"}`
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.WriteHeader(http.StatusOK)
+		io.WriteString(w, json)
+
+	} else {
+
+		json := `{"status":"error", "msg":"method not supported, only POST"}`
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.WriteHeader(http.StatusUnauthorized)
+		io.WriteString(w, json)
+	}
+
+	logf(r.Method,
+		r.RequestURI,
+		"Ping",
+		time.Since(start))
+}
+
+func main() {
+
+	// handlerFunc
+	http.HandleFunc("/v1/api/ping", Ping)
+
+	// show
+	write("\033[0;33mServer Run " +
+		"Port " +
+		addr + "\033[0m\n")
+
+	// Listen
+	log.Fatal(http.ListenAndServe(addr, nil))
+}</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl -i -XPOSt localhost:8080/v1/api/ping
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Feb 2019 22:04:57 GMT
+Content-Length: 58
+{"status":"success", "msg":"Go Workshop 2.0, Golang for Go Workshop 2.0!"}</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl -i -XGET localhost:8080/v1/api/ping
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Feb 2019 22:05:46 GMT
+Content-Length: 59
+{"status":"error", "msg":"method not supported, only POST"}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_14">
+	  					
+	  					<h3>Other Muxes</h3>
+
+	  					<p>Existem inúmeras substituições para o <strong>http.ServeMux</strong>, como o <strong>gorilla/mux</strong>, que fornecem coisas como extrair automaticamente variáveis de caminhos, declarar facilmente quais métodos de http são permitidos em um nó de extremidade e muito mais. A maioria desses substitutos implementará o <strong>http.Handler</strong> como o http.ServeMux, e aceita o http.Handlers como argumentos, sendo fáceis de usar em conjunto com o restante das coisas sobre as quais falarei neste post.</p>
+
+	  					<p>Vamos escrever nosso próprio http.HandlerFunc, vamos criar algo simples só para podermos entender o que acontece com as nossas apis.</p>
+
+	  					<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type numberDumperString string
+type numberDumperInt int
+
+// http HandlerFunc
+func (n numberDumperString) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Go Workshop 2.0, Golang is Life, Here's your number: %s\n", n)
+}
+
+// http HandlerFunc
+func (n numberDumperInt) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Go Workshop 2.0, Golang is Life, Here's your number: %d\n", n)
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	mux.Handle("/one", numberDumperString("one"))
+	mux.Handle("/two", numberDumperString("two"))
+	mux.Handle("/three", numberDumperInt(3))
+	mux.Handle("/four", numberDumperInt(4))
+	mux.Handle("/five", numberDumperInt(5))
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(404)
+		fmt.Fprintln(w, "That's not a supported number new Ghoper!")
+	})
+
+	// show run
+	log.Printf("\nServer run 8080\n")
+
+	// listen
+	err := http.ListenAndServe(":8080", mux)
+	log.Fatal(err)
+}</code></pre>
+
+						<p>Executar cURL:</p>
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/one
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 01:25:39 GMT
+Content-Length: 51
+Content-Type: text/plain; charset=utf-8
+
+Go Workshop 2.0, Golang is Life, Here's your number: one
+
+$ curl -i -Xget localhost:8080/two 
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 01:25:39 GMT
+Content-Length: 51
+Content-Type: text/plain; charset=utf-8
+
+Go Workshop 2.0, Golang is Life, Here's your number: two
+
+$ curl -i -Xget localhost:8080/three
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 01:25:39 GMT
+Content-Length: 51
+Content-Type: text/plain; charset=utf-8
+
+Go Workshop 2.0, Golang is Life, Here's your number: three
+
+$ curl -i -Xget localhost:8080/four
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 01:25:39 GMT
+Content-Length: 51
+Content-Type: text/plain; charset=utf-8
+
+Go Workshop 2.0, Golang is Life, Here's your number: four
+
+$ curl -i -Xget localhost:8080/eleven
+
+HTTP/1.1 404 Not Found
+Date: Sat, 02 Feb 2019 01:26:57 GMT
+Content-Length: 42
+Content-Type: text/plain; charset=utf-8
+
+That's not a supported number new Ghoper!</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_15">
+	  					
+	  					<h3>Testing Http endpoints</h3>
+
+	  					<p>O teste de endpoints http é extremamente fácil no Go e não exige que você realmente ouça em nenhuma porta! O pacote httptest fornece alguns utilitários úteis, incluindo o NewRecorder, que implementa o http.ResponseWriter e permite que você efetue efetivamente uma solicitação http, chamando o ServeHTTP diretamente. Veja um exemplo de um teste para o nosso numberDumperInt e numberDumperString implementados anteriormente, comentado exatamente com o que está acontecendo:</p>
+
+	  					<p>Vamos testar a API acima, para ver o comportamento e como é fácil usar testes usando endpoints...</p>
+
+	  					<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	. "testing"
+)
+
+func TestNumberDumperInt(t *T) {
+	// We first create the http.Handler we wish to test
+	n := numberDumperInt(3)
+
+	// We create an http.Request object to test with. The http.Request is
+	// totally customizable in every way that a real-life http request is, so
+	// even the most intricate behavior can be tested
+	r, _ := http.NewRequest("GET", "/one", nil)
+
+	// httptest.Recorder implements the http.ResponseWriter interface, and as
+	// such can be passed into ServeHTTP to receive the response. It will act as
+	// if all data being given to it is being sent to a real client, when in
+	// reality it's being buffered for later observation
+	w := httptest.NewRecorder()
+
+	// Pass in our httptest.Recorder and http.Request to our numberDumper. At
+	// this point the numberDumper will act just as if it was responding to a
+	// real request
+	n.ServeHTTP(w, r)
+
+	// httptest.Recorder gives a number of fields and methods which can be used
+	// to observe the response made to our request. Here we check the response
+	// code
+	if w.Code != 200 {
+		t.Fatalf("wrong code returned: %d", w.Code)
+	}
+
+	// We can also get the full body out of the httptest.Recorder, and check
+	// that its contents are what we expect
+	body := w.Body.String()
+
+	if body != fmt.Sprintf("Go Workshop 2.0, Golang is Life, Here's your number: 3\n") {
+		t.Fatalf("wrong body returned: %s", body)
+	}
+}</code></pre>
+
+						<p>Dessa forma, é fácil criar testes para seus componentes individuais que você usa para criar seu aplicativo, mantendo os testes próximos da funcionalidade que estão testando. <strong>Nota:</strong> se você precisar executar um servidor de teste em seus testes, o httptest também fornecerá uma maneira de criar um servidor escutando em uma porta aberta aleatória para uso em testes também.</p>
+
+						<p>Executar go:</p>
+
+<pre><code class="language-go">$ go test</code></pre>
+
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">PASS
+ok  	net-http/tests-endpoints	0.002s</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_16">
+	  					
+	  					<h3>Http Shutdown Gracefully</h3>
+
+<pre><code class="language-go">package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"os/signal"
+	"sync"
+	"time"
+)
+
+// HTMLServer represents the web service that serves up HTML
+type GoServerHttp struct {
+	server *http.Server
+	wg     sync.WaitGroup
+}
+
+func indexHandler(w http.ResponseWriter, req *http.Request) {
+	w.Write([]byte(`
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Golang/Go Workshop 2.0</title>
+
+  <style>
+  body {
+  background-color: #424242;
+  color: #F6F6F6;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  }
+  h1, h2, h3 {
+  margin: 0;
+  line-height: 1.5;
+  }
+  .print-container {
+  background-color: rgba(0, 0, 0, .3);
+  padding: 15px;
+  margin: 30px auto;
+  width: 50%;
+  border-radius: 4px;
+  }
+</style>
+
+</head>
+<body>
+  <div class="print-container">
+  <h1>{{ .Name }}</h1>
+  <h2>Workshop Golang for Go Workshop 2.0!</h2>
+  </div>
+</body>
+</html>
+	`))
+}
+
+func Ping(w http.ResponseWriter, req *http.Request) {
+	w.Write([]byte(`{"status":"success","msg":"Go Workshop 2.0 for Golang StartServer!"}`))
+}
+
+func main() {
+	// DefaultServeMux
+	mux := http.NewServeMux()
+
+	// POST handler /api/v1/ping
+	handlerApiPing := http.HandlerFunc(Ping)
+
+	// handler ping
+	mux.Handle("/v1/api/ping", handlerApiPing)
+
+	// templates/index html
+	// if you want to activate this handler, the directory templates
+	// where the html file is located must
+	// be sent next to the binary to work, as it needs to parse the html
+	// mux.HandleFunc("/", tpl.ShowHtml)
+
+	// this handler implements the version
+	// that does not need the html file
+	mux.Handle("/", http.HandlerFunc(indexHandler))
+
+	// Create the HTML Server
+	ApiServer := GoServerHttp{
+		server: &http.Server{
+			Addr:           ":8080",
+			Handler:        mux,
+			ReadTimeout:    10 * time.Second,
+			WriteTimeout:   20 * time.Second,
+			MaxHeaderBytes: 1 << 25, //32Mb
+		},
+	}
+
+	go func() {
+
+		log.Printf("\nServer run :8080\n")
+		// service connections
+		if err := ApiServer.server.ListenAndServe(); err != nil {
+			log.Printf("listen: %s\n", err)
+		}
+	}()
+
+	var errs = make(chan error, 2)
+
+	go func() {
+		// Setting up signal capturing
+		c := make(chan os.Signal)
+		signal.Notify(c, os.Interrupt)
+		errs <- fmt.Errorf("Notify here: %s", <-c)
+
+	}()
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt)
+
+	// Waiting for SIGINT (pkill -2)
+	//<-errs
+
+	// Wait for interrupt signal to gracefully shutdown the server with
+	// a timeout of 5 seconds.
+	//quit := make(chan os.Signal)
+	//signal.Notify(quit, os.Interrupt)
+	//<-quit
+	<-stop
+
+	log.Println("Shutdown Server ...")
+	// ... here is the code to close all
+	// ...
+	// ....
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := ApiServer.server.Shutdown(ctx); err != nil {
+		log.Fatal("Server Shutdown now:", err)
+		// ... here is the code to close all error context
+		// ...
+		// ....
+	}
+
+	// execute finish
+	log.Println("Server exist")
+
+	<-errs
+}</code></pre>
+
+						<p>Vá para o navegador e digite:</p>
+
+<pre><code class="language-go">http://localhost:8080</code></pre>
+
+						<p>Fazendo uma solicitação na sua API:</p>
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/v1/api/ping
+
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 02:32:32 GMT
+Content-Length: 62
+Content-Type: text/plain; charset=utf-8
+
+{"status":"success","msg":"Go Workshop 2.0 for Golang StartServer!"}% </code></pre>
+
+						<p>Depois de parar o programa, com CTRL + C, veja o que vai acontecer.</p>
+
+<pre><code class="language-go">2019/02/02 00:55:30 
+Server run :8080
+^C2019/02/02 00:55:31 Shutdown Server ...
+2019/02/02 00:55:31 Server exist
+2019/02/02 00:55:31 listen: http: Server closed</code></pre>
+
+						<p>Agora vamos tentar usar o comando kill.</p>
+
+<pre><code class="language-go">$ ps aux | grep "name-api"
+$ kill -SIGINT <PID></code></pre>
+
+						<p>Olhe a saída:</p>
+
+<pre><code class="language-go">2019/02/02 00:52:24 
+Server run :8080
+2019/02/02 00:55:10 Shutdown Server ...
+2019/02/02 00:55:10 listen: http: Server closed
+2019/02/02 00:55:10 Server exist</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_17">
+	  					
+	  					<h3>Middleware</h3>
+
+	  					<p>A exibição de pontos de extremidade é boa, mas muitas vezes há funcionalidades que você precisa executar para cada solicitação antes que o manipulador do ponto de extremidade real seja executado. Por exemplo, log de acesso. Um componente de middleware é aquele que implementa o http.Handler, mas, na verdade, passará o pedido para outro http.Handler depois de executar algum conjunto de ações. O http.ServeMux que analisamos anteriormente é na verdade um exemplo de middleware, já que ele passa a solicitação para outro http.Handler para o processamento real.</p>
+
+	  					<p>Existem várias maneiras de implementar um Middleware, mas o conceito por trás de tudo é o mesmo para todos, sempre teremos que retornar um retorno http.HandlerFunc, todas as libs fizeram dessa forma, existem implementações muito elegantes e diversas libs na internet para fazer isso.</p>
+
+	  					<p>Vamos implementar nossos Middlewares e ver como isso funciona na prática.</p>
+
+	  					<p>Venha comigo, agora que as coisas começam a esfriar.</p>
+
+	  					<p>Veja um exemplo do nosso exemplo anterior com alguns middlewares de registro:</p>
+
+	  					<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"io"
+	"log"
+	"net/http"
+	"time"
+)
+
+// color terminal
+var Expre = "\033[5m%s \033[0;103m%s\033[0m \033[0;93m%s\033[0m \033[1;44m%s\033[0m"
+
+func Ping(w http.ResponseWriter, r *http.Request) {
+
+	json := `{"status":"success","msg":"pong"}`
+	w.Write([]byte(json))
+}
+
+// This middleware is responsible for holding up when we have a
+// very large number of accesses in a very small time interval,
+// depending on the capacity of your traffic, cpu and memory.
+// It is one of the favorite middlewares, it is very powerful,
+// not only determines the number of clients, but it does
+// not have to lose in the requests sent.
+func MaxClients(n int) Adapter {
+	sema := make(chan struct{}, n)
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			sema <- struct{}{}
+			defer func() { <-sema }()
+			h.ServeHTTP(w, r)
+		})
+	}
+}
+
+// This middleware is only a simulation, to implement the
+// jwt in Go is very quiet, I will
+// demonstrate in other topics below.
+func AuthJwt() Adapter {
+	//s1 := logg.Start()
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			//if gjwt.CheckJwt(w, r) {
+			if r.Header.Get("X-KEY") == "123" {
+				h.ServeHTTP(w, r)
+			} else {
+				msgjson := `{"status":"error","message":"error in Jwt!"}`
+				w.Header().Set("Content-Type", "application/json; charset=utf-8")
+				w.WriteHeader(http.StatusUnauthorized)
+				io.WriteString(w, msgjson)
+				//logg.Show(r.URL.Path, strings.ToUpper(r.Method), "error", s1)
+			}
+		})
+	}
+}
+
+// Middleware Logger
+func Logger(name string) Adapter {
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
+			h.ServeHTTP(w, r)
+			log.Printf(
+				"%s %s %s %s",
+				r.Method,
+				r.RequestURI,
+				name,
+				time.Since(start),
+			)
+		})
+	}
+}
+
+// Middleware Logger
+func LoggerColor(name string) Adapter {
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
+			h.ServeHTTP(w, r)
+			log.Printf(
+				Expre,
+				r.Method,
+				r.RequestURI,
+				name,
+				time.Since(start),
+			)
+		})
+	}
+}
+
+type Adapter func(http.Handler) http.Handler
+
+// Middleware
+func Middleware(h http.Handler, adapters ...Adapter) http.Handler {
+	for _, adapter := range adapters {
+		h = adapter(h)
+	}
+	return h
+}
+
+func main() {
+
+	mux := http.NewServeMux()
+
+	handlerApiPing := http.HandlerFunc(Ping)
+
+	// generate token jwt
+	// handler token
+	mux.Handle("/v1/api/ping",
+		Middleware(handlerApiPing,
+			Logger("ping"),
+		))
+
+	mux.Handle("/v1/api/login",
+		Middleware(handlerApiPing,
+			AuthJwt(),
+			//Logger("login"),
+			LoggerColor("login"),
+		))
+
+	// show run server
+	log.Printf("\nServer run :8080\n")
+
+	// Listen
+	log.Fatal(http.ListenAndServe(":8080", mux))
+}</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ go run api-server-middleware.go</code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/v1/api/login -H "X-KEY: 123"
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 03:37:12 GMT
+Content-Length: 33
+Content-Type: text/plain; charset=utf-8
+
+{"status":"success","msg":"pong"}% </code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/v1/api/login -H "X-KEY: 123454"
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json; charset=utf-8
+Date: Sat, 02 Feb 2019 03:43:39 GMT
+Content-Length: 44
+
+{"status":"error","message":"error in Jwt!"}% </code></pre>
+
+<br />
+
+<pre><code class="language-go">$ curl -i -Xget localhost:8080/v1/api/ping
+HTTP/1.1 200 OK
+Date: Sat, 02 Feb 2019 03:43:57 GMT
+Content-Length: 33
+Content-Type: text/plain; charset=utf-8
+
+{"status":"success","msg":"pong"}% </code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec28_18">
+	  					
+	  					<h3>http DetectContentType</h3>
+
+	  					<p>DetectContentType implementa o algoritmo descrito em <a href="https://mimesniff.spec.whatwg.org/" target="_blank">mimesniff</a> para determinar o Content-Type dos dados fornecidos. Considera no máximo os primeiros 512 bytes de dados. DetectContentType sempre retorna um tipo MIME válido: se não puder determinar um mais específico, ele retorna "application / octet-stream".</p>
+
+<pre><code class="language-go">func DetectContentType(data []byte) string</code></pre>
+
+						<p>Vamos agora visualizar um código que simplesmente abrirá o arquivo para descobrir seu tipo de conteúdo.</p>
+
+						<p>Vemos que podemos usar a função http.DetectContentType para trabalhar juntos, mesmo sem ser uma API diretamente.</p>
+
+						<p>Confira o código abaixo:</p>
+
+<pre><code class="language-go">import (
+    "fmt"
+    "net/http"
+    "os"
+)
+
+func main() {
+
+    // Open File
+    f, err := os.Open("./jeff-super.jpeg")
+    if err != nil {
+        panic(err)
+    }
+    defer f.Close()
+
+    // Get the content
+    contentType, err := GetFileContentType(f)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Content Type: " + contentType)
+}
+
+func GetFileContentType(out *os.File) (string, error) {
+
+    // Only the first 512 bytes are used to sniff the content type.
+    buffer := make([]byte, 512)
+
+    _, err := out.Read(buffer)
+    if err != nil {
+        return "", err
+    }
+
+    // Use the net/http package's handy DectectContentType function. Always returns a valid
+    // content-type by returning "application/octet-stream" if no others seemed to match.
+    contentType := http.DetectContentType(buffer)
+
+    return contentType, nil
+}</code></pre>
+						<p>Sa&iacute;da:</p>
+
+<pre><code class="language-go">Content Type: image/jpeg</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29">
+	  					
+	  					<h2>net/http Client</h2>
+
+	  				</div>
+
+	  				<div id="sec29_20">
+	  					
+	  					<h3>Introdução</h3>
+
+	  					<p>O pacote http fornece implementações de cliente e servidor HTTP.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_21">
+	  					
+	  					<h3>http.Transport</h3>
+
+	  					<p>Para controle sobre proxies, configuração TLS, keep-alives, compactação e outras configurações, crie um Transport:</p>
+
+<pre><code class="language-go">tr := &http.Transport{
+	MaxIdleConns:       10,
+	IdleConnTimeout:    30 * time.Second,
+	DisableCompression: true,
+}
+client := &http.Client{Transport: tr}
+resp, err := client.Get("https://example.com")</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_22">
+	  					
+	  					<h3>http.Client</h3>
+
+	  					<p>Para controle sobre cabeçalhos de cliente HTTP, diretiva de redirecionamento e outras configurações, crie um Cliente:</p>
+
+<pre><code class="language-go">client := &http.Client{
+	CheckRedirect: redirectPolicyFunc,
+}
+
+resp, err := client.Get("http://example.com")
+// ...
+
+req, err := http.NewRequest("GET", "http://example.com", nil)
+// ...
+req.Header.Add("If-None-Match", `W/"wyzzy"`)
+resp, err := client.Do(req)
+// ...</code></pre>
+
+						<p>Clientes e Transportes são seguros para uso simultâneo por múltiplas goroutines e para eficiência devem ser criados apenas uma vez e reutilizados.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_23">
+	  					
+	  					<h3>http.Get</h3>
+
+<pre><code class="language-go">resp, err := http.Get("http://example.com/")</code></pre>
+
+<br />
+
+<pre><code class="language-go">resp, err := http.Get("http://example.com/")
+if err != nil {
+	// handle error
+}
+defer resp.Body.Close()
+body, err := ioutil.ReadAll(resp.Body)
+// ...</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_24">
+	  					
+	  					<h3>http.Post</h3>
+
+<pre><code class="language-go">resp, err := http.Post("http://example.com/upload", "image/jpeg", &buf)</code></pre>
+
+<br />
+
+<pre><code class="language-go">resp, err := http.Get("http://example.com/")
+if err != nil {
+	// handle error
+}
+defer resp.Body.Close()
+body, err := ioutil.ReadAll(resp.Body)
+// ...</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_25">
+	  					
+	  					<h3>http.NewRequest</h3>
+
+<pre><code class="language-go">func NewRequest(method, url string, body io.Reader) (*Request, error)</code></pre>
+
+						<p>NewRequest retorna um novo pedido, dado um método, URL e corpo opcional.</p>
+
+						<p>Se o corpo fornecido também for um io.Closer, o Request.Body retornado será definido como corpo e será fechado pelos métodos do Cliente, Post, PostForm e Transport.RoundTrip.</p>
+
+						<p>NewRequest retorna um pedido adequado para uso com Client.Do ou Transport.RoundTrip. Para criar uma solicitação para uso com o teste de um Manipulador do Servidor, use a função NewRequest no pacote net / http / httptest, use ReadRequest ou atualize manualmente os campos Solicitação. Consulte a documentação do tipo de solicitação para saber a diferença entre os campos de solicitação de entrada e saída.</p>
+
+						<p>Se body for do tipo *bytes.Buffer, *bytes.Reader ou *strings.Reader, o ContentLength da solicitação retornada será definido com seu valor exato (em vez de -1), GetBody será preenchido (portanto, redirecionamentos 307 e 308 poderão reproduzir body) e Body é definido como NoBody se o ContentLength for 0.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec29_26">
+	  					
+	  					<h3>Context.WithCancel</h3>
+
+<pre><code class="language-go">func WithCancel(parent Context) (ctx Context, cancel CancelFunc)</code></pre>
+
+						<p>WithCancel retorna uma cópia do pai com um novo canal Done. O canal Done do contexto retornado é fechado quando a função de cancelamento retornada é chamada ou quando o canal Done do contexto pai é fechado, o que ocorrer primeiro.</p>
+
+						<p>Cancelar este contexto libera recursos associados a ele, portanto, o código deve cancelar, assim que as operações executadas neste Contexto forem concluídas.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"context"
+	"fmt"
+)
+
+func main() {
+	// gen generates integers in a separate goroutine and
+	// sends them to the returned channel.
+	// The callers of gen need to cancel the context once
+	// they are done consuming generated integers not to leak
+	// the internal goroutine started by gen.
+	gen := func(ctx context.Context) <-chan int {
+		dst := make(chan int)
+		n := 1
+		go func() {
+			for {
+				select {
+				case <-ctx.Done():
+					return // returning not to leak the goroutine
+				case dst <- n:
+					n++
+				}
+			}
+		}()
+		return dst
+	}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel() // cancel when we are finished consuming integers
+
+	for n := range gen(ctx) {
+		fmt.Println(n)
+		if n == 5 {
+			break
+		}
+	}
+}</code></pre>
+
+						<p>Este exemplo demonstra o uso de um contexto cancelável para evitar um vazamento de goroutine. No final da função de exemplo, a goroutine iniciada por gen retornará sem vazamento.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30">
+	  					
+	  					<h2>net/http Server Pages</h2>
+
+	  				</div>
+
+	  				<div id="sec30_27">
+	  					
+	  					<h3>Introdução</h3>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30_28">
+	  					
+	  					<h3>http.FileServer</h3>
+
+<pre><code class="language-go">func FileServer(root FileSystem) Handler</code></pre>
+
+						<p>O FileServer retorna um manipulador que atende a solicitações HTTP com o conteúdo do sistema de arquivos com raiz na raiz.</p>
+
+						<p>Para usar a implementação do sistema de arquivos do sistema operacional, use http.Dir:</p>
+
+<pre><code class="language-go">http.Handle("/", http.FileServer(http.Dir("/tmp")))</code></pre>
+	
+						<p>Como um caso especial, o servidor de arquivos retornado redireciona qualquer solicitação terminada em "/index.html" para o mesmo caminho, sem o "index.html" final.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+	// Simple static webserver:
+	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("/usr/share/doc"))))
+}</code></pre>
+
+<br />
+
+<pre><code class="language-go">package main
+
+import "net/http"
+
+func main() {
+
+	// http://localhost:8085/login.html
+
+	// diretorio fisico
+	fs := http.FileServer(http.Dir("web/"))
+	// mostra no browser localhost:8080/static
+	http.Handle("/", http.StripPrefix("/", fs))
+	http.ListenAndServe(":8085", nil)
+}</code></pre>
+
+<pre><code class="language-go">// Go Api server
+// @jeffotoni
+
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"text/template"
+)
+
+type Login struct {
+	Title      string
+	MsgError   string
+	IfLabelone string
+	Labelone   string
+}
+
+func HandlerLoginHtml(w http.ResponseWriter, r *http.Request) {
+	// template lendo HTML
+
+	tmpl := template.Must(template.ParseFiles("web/login.html"))
+
+	login := Login{
+		MsgError:   "",
+		IfLabelone: "",
+		Title:      "Workshop2.0",
+		Labelone:   "logar!",
+	}
+
+	tmpl.Execute(w, login)
+}
+
+func HandlerAdminHtml(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func HandlerAuth(w http.ResponseWriter, r *http.Request) {
+	json := `{"status":"ok", "message":"tudo ocorreu bem na Auth..."}`
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(json))
+}
+
+func main() {
+
+	mux := http.NewServeMux()
+
+	// retorna HTML
+	mux.HandleFunc("/login", HandlerLoginHtml)
+
+	// auth
+	mux.HandleFunc("/v1/api/auth", HandlerAuth)
+
+	// fisico
+	fs := http.FileServer(http.Dir("./web"))
+
+	// vitual
+	mux.Handle("/", http.StripPrefix("/", fs))
+
+	fmt.Println("Server Run: 8085")
+	http.ListenAndServe(":8085", mux)
+}
+</code></pre>
+
+<br />
+
+						<img class="img-responsive center-block" src="img/exemplos/page-server-login.png" alt="Exemplo PageServer - Login" />
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30_29">
+	  					
+	  					<h3>http.NotFound</h3>
+
+<pre><code class="language-go">func NotFound(w ResponseWriter, r *Request)</code></pre>
+
+	  					<p>NotFound responde à solicitação com um erro HTTP 404 não encontrado.</p>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30_30">
+	  					
+	  					<h3>Disable http.FileServer</h3>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30_31">
+	  					
+	  					<h3>http.Dir</h3>
+
+	  					<p>Um Dir implementa o FileSystem usando o sistema de arquivos nativo restrito a uma árvore de diretórios específica.</p>
+
+	  					<p>Enquanto o método FileSystem.Open toma '/' - caminhos separados, o valor da string de um Dir é um nome de arquivo no sistema de arquivos nativo, não um URL, então é separado por filepath.Separator, que não é necessariamente '/'.</p>
+
+	  					<p>Observe que o Dir permitirá o acesso a arquivos e diretórios que começam com um ponto, o que pode expor diretórios sensíveis, como um diretório .git ou arquivos confidenciais, como .htpasswd. Para excluir arquivos com um período inicial, remova os arquivos / diretórios do servidor ou crie uma implementação personalizada do FileSystem.</p>
+
+	  					<p>Um Dir vazio é tratado como ".".</p>
+
+<pre><code class="language-go">type Dir string</code></pre>
+
+						<h4>func (Dir) Open</h4>
+
+<pre><code class="language-go">func (d Dir) Open(name string) (File, error)</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec30_32">
+	  					
+	  					<h3>http.StripPrefix</h3>
+
+<pre><code class="language-go">func StripPrefix(prefix string, h Handler) Handler</code></pre>
+
+						<p>O StripPrefix retorna um manipulador que atende a solicitações HTTP removendo o prefixo fornecido do caminho do URL de solicitação e chamando o manipulador h. O StripPrefix manipula uma solicitação para um caminho que não começa com o prefixo respondendo com um erro HTTP 404 não encontrado.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	"net/http"
+)
+
+func main() {
+	// To serve a directory on disk (/tmp) under an alternate URL
+	// path (/tmpfiles/), use StripPrefix to modify the request
+	// URL's path before the FileServer sees it:
+	http.Handle("/tmpfiles/", http.StripPrefix("/tmpfiles/", http.FileServer(http.Dir("/tmp"))))
+}</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec31">
+	  					
+	  					<h2>net/http RPC</h2>
+
+	  					<p>O pacote rpc fornece acesso aos métodos exportados de um objeto através de uma rede ou outra conexão de E/S. Um servidor registra um objeto, tornando-o visível como um serviço com o nome do tipo do objeto. Após o registro, os métodos exportados do objeto estarão acessíveis remotamente. Um servidor pode registrar vários objetos (serviços) de tipos diferentes, mas é um erro registrar vários objetos do mesmo tipo.</p>
+
+	  					<p>O servidor pode manipular solicitações em uma única conexão chamando ServeConn. Mais normalmente, ele cria um ouvinte de rede e chama Aceitar ou, para um ouvinte HTTP, HandleHTTP e http.Serve.</p>
+
+	  					<p>Um cliente que deseja usar o serviço estabelece uma conexão e, em seguida, chama o NewClient na conexão. A função de conveniência Dial (DialHTTP) executa as duas etapas para uma conexão de rede bruta (uma conexão HTTP). O objeto Client resultante possui dois métodos, Call and Go, que especificam o serviço e o método a ser chamado, um ponteiro contendo os argumentos e um ponteiro para receber os parâmetros de resultado.</p>
+
+	  					<p>O método Call espera que a chamada remota seja concluída enquanto o método Go inicia a chamada de forma assíncrona e sinaliza a conclusão usando o canal Done da estrutura de chamada.</p>
+
+	  					<p>A menos que um codec explícito seja configurado, o pacote encoding / gob é usado para transportar os dados.</p>
+
+	  					<p>Aqui está um exemplo simples. Um servidor deseja exportar um objeto do tipo Arith:</p>
+
+<pre><code class="language-go">package server
+
+import "errors"
+
+type Args struct {
+  A, B int
+}
+
+type Quotient struct {
+  Quo, Rem int
+}
+
+type Arith int
+
+func (t *Arith) Multiply(args *Args, reply *int) error {
+  *reply = args.A * args.B
+  return nil
+}
+
+func (t *Arith) Divide(args *Args, quo *Quotient) error {
+  if args.B == 0 {
+    return errors.New("divide by zero")
+  }
+  quo.Quo = args.A / args.B
+  quo.Rem = args.A % args.B
+  return nil
+}</code></pre>
+
+<br />
+
+<strong>rpcserver.go</strong>
+<pre><code class="language-go">// Go in Action
+// @jeffotoni
+
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+	"net/rpc"
+	"net/rpc/jsonrpc"
+)
+
+var PORT_RPC = ":22334"
+
+type Args struct {
+	Json string
+}
+
+type Receive struct{}
+
+func (t *Receive) Json(args *Args, reply *string) error {
+	if len(args.Json) <= 0 {
+		*reply = `{"status":"error", "msg":"json field is required"}`
+		return nil
+	}
+
+	*reply = "ok"
+	fmt.Println("publisher: ", args.Json)
+	return nil
+}
+
+func main() {
+	re := new(Receive)
+	serverRpc := rpc.NewServer()
+	serverRpc.Register(re)
+	serverRpc.HandleHTTP(rpc.DefaultRPCPath, rpc.DefaultDebugPath)
+	listener, e := net.Listen("tcp", PORT_RPC)
+	if e != nil {
+		log.Println("listen error:", e)
+		return
+	}
+
+	// to listen
+	for {
+		if conn, err := listener.Accept(); err != nil {
+			log.Println("accept error: ", err.Error())
+			return
+		} else {
+			log.Printf("New connection established in rpc server\n")
+			serverRpc.ServeCodec(jsonrpc.NewServerCodec(conn))
+		}
+	}
+}
+</code></pre>
+
+<br />
+
+<strong>rpcclient.go</strong>
+<pre><code class="language-go">// Go in Action
+// @jeffotoni
+
+package main
+
+import (
+	"flag"
+	"fmt"
+	"log"
+	"net"
+	"net/rpc/jsonrpc"
+	"strconv"
+	"time"
+)
+
+type Args struct {
+	Json string
+}
+
+func main() {
+
+	host := flag.String("host", "127.0.0.1", "")
+	port := flag.String("port", "22334", "")
+	request := flag.String("req", "10000", "")
+
+	flag.Parse()
+	TCPHOST := *host + ":" + *port
+	client, err := net.Dial("tcp", TCPHOST)
+	if err != nil {
+		log.Fatal("dialing client:", err)
+		return
+	}
+
+	req, _ := strconv.Atoi(*request)
+	if req <= 0 {
+		log.Fatal("Requests must be greater than 0")
+	}
+
+	start := time.Now()
+	fmt.Println("\033[0;32mRun Tests...\033[0;0m")
+	fmt.Println("\033[0;33mRequests: ", req)
+	fmt.Println("Port:     ", *port)
+	fmt.Printf("\033[0;0m")
+
+	var reply string
+	args := &Args{}
+	c := jsonrpc.NewClient(client)
+
+	for i := 0; i < req; i++ {
+		args = &Args{`{"versão": "1.1","host": "exemplo.org","key":"jeff_` + strconv.Itoa(i) + `",
+		"level":"info", "project":"my-project-here","short_message": "one msg here...", 
+		"nível": 5, "some_info": "foo"}`}
+		err = c.Call("Receive.Json", args, &reply)
+		if err != nil {
+			log.Fatal("capture json error:", err)
+		}
+		// fmt.Printf("Result: %s\n", reply)
+	}
+
+	end := time.Now()
+	diff := end.Sub(start)
+	fmt.Println("Time:    ", diff)
+}
+</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec27">
+	  					
+	  					<h2>Configuração Docker Postgres</h2>
+
+	  				</div>
+
+	  				<div id="sec27_1">
+
+	  					<h3>Postgres</h3>
+
+<pre><code class="language-go">docker pull postgres</code></pre>
+
+<pre><code class="language-go">docker volume create pgdata</code></pre>
+
+<pre><code class="language-go">docker run --name postgres -e \
+	POSTGRES_PASSWORD=12345 -v (pwd)/sql:/tmp -v pgdata:/var/lib/postgresql/data -d postgres
+
+docker run -it -v /tmp:/tmp --rm postgres \ 
+	psql -d apis3produto -h 172.17.0.2 -U gopher -f /tmp/table.sql
+
+docker run -it -v /tmp:/tmp --rm \ 
+	postgres pg_dump -Fc -Z9 -d apis3produto -h 172.17.0.2 -U gopher -f /tmp/table2.sql
+
+docker run -it --rm postgres \
+	psql -h 172.17.0.2 -U postgres -c "create database apis3produto -O gopher -E UTF-8"</code></pre>
+
+<pre><code class="language-go">docker exec -it postgres bash</code></pre>
+
+<pre><code class="language-go">createuser gopher -U postgres
+
+createdb apis3produto -U postgres -O gopher -E UTF-8 -T template0
+
+psql -d template1 -U postgres
+
+# alter user gopher password '12345'
+# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+drop table public.user;</code></pre>
+
+<pre><code class="language-go">docker run pgadmin</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+	  				<div id="sec27_2">
+
+	  					<h3>PgAdmin</h3>
+
+<pre><code class="language-go">docker pull dpage/pgadmin4</code></pre>
+
+<pre><code class="language-go">docker run -p 9000:80 \
+	-e "PGADMIN_DEFAULT_EMAIL=jeff.otoni@s3wf.com.br" \
+	-e "PGADMIN_DEFAULT_PASSWORD=1234" \
+	-d dpage/pgadmin4</code></pre>
+
+<pre><code class="language-go">http://localhost:9000/login?next=%2F</code></pre>
+
+	  				</div>
+
+	  				<hr />
+
+
+
+
+	  		</div> 
+		</div>
+	</div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
+
+    <!-- Prism Syntax Highlighting -->
+    <script src="plugins/prism/prism.js"></script>
+
+</body>
+</html>

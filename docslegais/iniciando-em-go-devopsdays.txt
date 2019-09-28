@@ -1,0 +1,145 @@
+
+
+Editores
+
+- vim-go
+- Sublime
+- Vscode
+- Ou o seu de preferência
+
+Clients rEST
+
+ - curl
+ - Postman
+ - insomnia
+
+ Utilitarios
+
+  - docker
+  - postgres
+  - nmap
+  - netstat -tunlp
+  - netstat -lputa
+
+
+
+O download 
+https://golang.org/dl/
+
+INSTALL
+https://golang.org/doc/install?download=go1.13.1.linux-amd64.tar.gz
+
+tar -C /usr/local -xzf go1.13.1.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+
+-------------------------------------
+export PATH=~/.local/bin:$PATH
+export GOPATH=$HOME/projetos.go/
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+-------------------------------------
+
+Configurando e codando em Go 
+https://golang.org/doc/code.html
+
+The GOPATH environment variable
+
+$ export PATH=$PATH:$(go env GOPATH)/bin
+$ export GOPATH=$(go env GOPATH)
+
+$ mkdir -p $GOPATH/src/github.com/user
+$ mkdir $GOPATH/src/github.com/user/hello
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world.")
+}
+
+$ go install github.com/user/hello
+$ cd $GOPATH/src/github.com/user/hello
+
+
+Your first library
+
+$ mkdir $GOPATH/src/github.com/user/stringutil
+
+// Package stringutil contains utility functions for working with strings.
+package stringutil
+
+// Reverse returns its argument string reversed rune-wise left to right.
+func Reverse(s string) string {
+	r := []rune(s)
+	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
+		r[i], r[j] = r[j], r[i]
+	}
+	return string(r)
+}
+
+$ go build github.com/user/stringutil
+
+
+package main
+
+import (
+	"fmt"
+
+	"github.com/user/stringutil"
+)
+
+func main() {
+	fmt.Println(stringutil.Reverse("!oG ,olleH"))
+}
+
+ $ go install github.com/user/hello
+
+
+ bin/
+    hello                 # command executable
+src/
+    github.com/user/
+        hello/
+            hello.go      # command source
+        stringutil/
+            reverse.go    # package source
+
+
+----------
+TESTING
+
+package stringutil
+
+import "testing"
+
+func TestReverse(t *testing.T) {
+	cases := []struct {
+		in, want string
+	}{
+		{"Hello, world", "dlrow ,olleH"},
+		{"Hello, 世界", "界世 ,olleH"},
+		{"", ""},
+	}
+	for _, c := range cases {
+		got := Reverse(c.in)
+		if got != c.want {
+			t.Errorf("Reverse(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+go test
+
+
+Module
+
+$ go mod init <project>
+or
+$ go mod init github.com/user/project
+or 
+
+$ go mod init projectgo
+
+

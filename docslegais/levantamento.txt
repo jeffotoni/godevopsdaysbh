@@ -1,0 +1,310 @@
+ESQUEMA DO CURSO 
+
+Introdução conteúdos
+
+Go está na versão 1.12.7 e caminhando para versão 2.0, todo ciclo de desenvolvimento de seu core respeita o arcaboço e designer do que foi proposto no inicio do surgimento da linguagem. O objetivo centrarl sobre Go é torna-lá cada vez mais produtiva e deixar a linguagem ainda mais simples para os que forem desenvolver em Go.
+
+Durante o processo, a equipe de desenvolvimento Go apresentou quatro maneiras principais de simplificar a experiência geral de escrever programas Go: Remodelando, Redefinindo, Removendo e Restringindo chamado os quatro R's da simplificações.
+
+Neste cenário percebe-se claramente que no designer de Go "Menos é exponencialmente Mais", e nasceu o termo "Programar do jeito Go de fazer as coisas"
+
+Espero que todos gostem e possam servir de base para aprender e ajudar vários Gophers possíveis.
+
+O conteúdo e as referências usadas são do Site Oficial de Golang e grande parte é feita sobre a ótica prática do autor.
+
+Fundamentos da Linguagem
+
+1 - Compilada e estática
+
+$ go build
+
+$ go build -ldflags="-s -w" hello.go
+
+Compilando para Lambda
+$ GOOS=linux GOARCH=amd64 go build -o lambda lambda.go
+
+Compilando para WebAssembly
+$ GOARCH=wasm GOOS=js go build -o test.wasm hello.go
+
+Compilando e gerando um .o file, e gera o seu assembly
+$ GOOS=linux GOARCH=amd64 go tool compile -S hello.go 
+$ go tool compile -S hello.go > hello.S
+$ go build -gcflags -S hello.go
+
+Gerando o dump do assembly
+go tool objdump hello > ref-assembly
+
+Isso está no código para quando compilamos para diferenciar 
+e compilar somente aqueles que contêm essas tags.
+Ao compilar basta informar a tag que você colocou no seu código
+
+// +build !windows
+$ go build -o main main
+
+Buildmode
+
+$ go help buildmode
+
+-buildmode=plugin
+package main
+
+import "plugin"
+import "io"
+import "strings"
+import "os"
+
+func main() {
+	p, err := plugin.Open("../plugin/randseed.so")
+	if err != nil {
+		panic(err)
+	}
+
+	f, err := p.Lookup("RandSeed")
+	if err != nil {
+		panic(err)
+	}
+
+	io.Copy(os.Stdout, strings.NewReader(f.(func() string)()))
+}
+
+Compilando estática em C
+$ gcc -static -o hello-c hello.c -lm
+
+$ GO111MODULE=on
+
+$ GOMAXPROCS=NUMERO-CPU
+
+2 - Gc (Garbage Collector) [https://blog.golang.org/ismmkeynote]
+package main
+
+import "fmt"
+import "runtime"
+import "sync"
+
+func  main() {
+	lotsOf := make([]*int, 15e8)
+	runtime.GC()
+	numWorkers := runtime.NumCPU()
+	var wg sync.WaitGroup
+	for i := 0; i < numWorkers; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			work()
+		}()
+	}
+	wg.Wait()
+	runtime.KeepAlive(lotsOf)
+}
+
+3 - Paradigma Concorrente
+
+Canais são como filas que forne acesso sincronizado automático entre goroutines. 
+Esse entendimento nos levará a escrever códigos concorrentes.
+
+O importante é sempre focar como eles se comportam. 
+Um canal permite que uma goroutine sinalize outra goroutine sobre um determinado evento. 
+A sinalização está no centro de tudo que você deve fazer com os canais. 
+Pensar nos canais como um mecanismo de sinalização permitirá que você escreva um código melhor com um comportamento bem definido e mais preciso.
+
+Para entender como funciona a sinalização, precisamos entender seus três atributos:
+
+	- Garantia de entrega
+	- Estado
+	- Com ou sem dados
+
+Esses três atributos trabalham juntos para criar uma filosofia de design em torno da sinalização. 
+
+Garantia de entrega
+A garantia de entrega é baseada em uma pergunta: "Preciso de uma garantia de que o sinal enviado por uma goroutine específica foi recebido?"
+
+func main() {
+	ch := make(chan string)
+	go func() {
+	    p := <-ch // Receive
+	}()
+
+	ch <- "paper" // Send
+}
+
+
+Estado
+O comportamento de um canal é diretamente influenciado pelo seu estado atual. O estado de um canal pode ser nulo , aberto ou fechado .
+
+// ** nil channel
+// Um chan é um estado com nil quando ele é declardo com zero value
+var ch chan string
+
+// Um chan pode ser alterado com nil e torna um estado de forma explicita
+ch = nil
+
+
+// ** open channel
+// Um chan é de estado aberto quando é usado built-in function make.
+ch := make(chan string)    
+
+
+// ** closed channel
+// Um chan é fechado o estado quando é usado built-in function close.
+close(ch)
+
+Quando um canal está em um estado nulo , qualquer tentativa de envio ou recebimento no canal será bloqueada. Quando um canal está em estado aberto , os sinais podem ser enviados e recebidos. Quando um canal é colocado em um estado fechado , os sinais não podem mais ser enviados, mas ainda é possível receber sinais.
+
+Esses estados fornecerão os diferentes comportamentos que você precisa para as diferentes situações que encontrar. Ao combinar Estado com Garantia de Entrega , você pode começar a analisar os custos / benefícios que você está incorrendo como resultado de suas escolhas de projeto. Em muitos casos, você também será capaz de identificar rapidamente os bugs apenas lendo o código, porque você entende como o canal vai se comportar.
+
+
+package main
+
+import "fmt"
+
+func main() {
+	ch := make(chan string,10)
+
+	ch <- "paper 1" // Send
+	ch <- "paper 2" // Send
+	ch <- "paper 3" // Send
+
+	fmt.Println(<-ch) // Receive
+	fmt.Println(<-ch) // Receive
+	fmt.Println(<-ch) // Receive
+}
+
+package main
+
+import "fmt"
+import "time"
+
+var stream = make(chan int)
+var fin = make(chan bool)
+
+func produce() {
+    for i := 0; i < 10; i++ {
+        fmt.Println("sending")
+        stream <- i
+        fmt.Println("sent")
+    }
+
+    fmt.Println("No closing channel")
+    //close(stream)
+    fin <- true
+}
+
+func consume() {
+    for {
+        data := <-stream
+        fmt.Println("Consumer: ", data)
+        time.Sleep(500 * time.Millisecond)
+    }
+}
+
+func main() {
+    go consume()
+    go produce()
+    <-fin
+    fmt.Println("After calling DONE")
+}
+
+
+4 - Tipagem estática
+
+Go é uma linguagem de programação compilada e pertence a família da linguagem C. 
+Contudo, seu tempo de compilação é muito mais rápido do que outras linguagens da mesma família. 
+Ela possui apenas 25 palavras-chave (palavras reservadas)
+Vamos dar uma olhada nessas palavras antes de começar.
+
+break    default      func    interface    select
+case     defer        go      map          struct
+chan     else         goto    package      switch
+const    fallthrough  if      range        type
+continue for          import  return       var
+
+package main
+
+import "fmt"
+
+func main() {
+	
+	type MyString string 
+
+	const nome string = "@jeffotoni"
+
+	var vars MyString
+	var t string
+	var a int
+
+	vars = MyString(nome)
+	t = "ola"
+	a = 100
+
+	fmt.Println(t, a, nome)
+}
+
+5 - Semântica é clara
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Workshop2.0")
+}
+
+6 - Sintaxe é limpa
+
+package main
+
+import "fmt"
+
+func main() {
+	io.Copy(os.Stdout, strings.NewReader(f.(func() string)()))
+}
+
+7 - É de uso Geral
+
+package main
+package main
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void GoPrint(char* s) {
+	printf("%s\n", s);
+}
+*/
+import "C"
+
+func main() {
+	C.GoPrint(C.CString("Workshop 2.0\n"))
+}
+
+8 - Plataformas: Windows, Linux, Mac e FreeBSD
+
+
+--------------------------------------------------------------------------------------------------------------
+
+golang / Instalação / $GOPATH and workspace / go mod
+
+Vamos reforçar nossos conhecimentos em: Json / Marsha, Unmarshal + structs
+
+Criando nosso docker-compose.yaml, Dockerfile e fazendo docker build de nossos services
+
+Docker postgres
+
+Docker prometheus
+
+Docker de nossa API GO
+
+O que é instrumentar API usando GO?
+
+Criando nossos Middlewares
+
+Middlewares [ Logger, Auth, prometheus, maxclient ]
+
+Clean Code
+
+Arquitetura Hexagonal
+
+Organizando toda nossa base de códigos para criar nossa API.
+
+

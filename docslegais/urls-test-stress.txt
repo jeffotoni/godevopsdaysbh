@@ -1,0 +1,4 @@
+http://localhost:8081/produto/ping
+http://localhost:8081/produto/ping
+http://localhost:8081/produto/ping
+http://localhost:8081/produto/ping

@@ -1,0 +1,39 @@
+{
+   "product":{
+      "sku":"1000",
+      "name":"Pc Completo Gamer Com Monitor Lcd! 4gb, Wifi + 30 Jogos!",
+      "description":"descricao do produto Pc Completo Gamer Com Monitor Lcd! 4gb, Wifi + 30 Jogos!",
+      "status":"enabled",
+      "removed":false,
+      "qty":20,
+      "price":699,
+      "promotional_price":1600.99,
+      "cost":null,
+      "weight":49.12,
+      "height":17.49,
+      "width":72.49,
+      "length":111,
+      "brand":"ITATIAIA",
+      "ean":"7892946327425",
+      "nbm":null,
+      "categories":[
+         {
+            "code":"10103002",
+            "name":"Informatica"
+         }
+      ],
+      "images":[
+         "https://http2.mlstatic.com/pc-completo-gamer-com-monitor-lcd-4gb-wifi-30-jogos-D_NQ_NP_942100-MLB31092984544_062019-F.webp",
+         "https://http2.mlstatic.com/pc-completo-gamer-com-monitor-lcd-4gb-wifi-30-jogos-D_NQ_NP_942100-MLB31092984544_062019-F1.webp",
+         "https://http2.mlstatic.com/pc-completo-gamer-com-monitor-lcd-4gb-wifi-30-jogos-D_NQ_NP_942100-MLB31092984544_062019-F2.webp",
+         "https://http2.mlstatic.com/pc-completo-gamer-com-monitor-lcd-4gb-wifi-30-jogos-D_NQ_NP_942100-MLB31092984544_062019-F3.webp",
+         "https://http2.mlstatic.com/pc-completo-gamer-com-monitor-lcd-4gb-wifi-30-jogos-D_NQ_NP_942100-MLB31092984544_062019-F4.webp"
+      ],
+      "specifications":[
+         {
+            "key":"PROCESSADOR",
+            "value":"I7"
+         }
+      ]
+   }
+}

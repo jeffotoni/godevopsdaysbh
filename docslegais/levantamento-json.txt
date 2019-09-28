@@ -1,0 +1,173 @@
+
+
+Vamos reforçar nossos conhecimentos em: Json / Marsha, Unmarshal + structs
+
+Json
+O pacote json implementa a codificação e decodificação de JSON, conforme definido no RFC 7159 . O mapeamento entre os valores JSON e Go é descrito na documentação das funções Marshal e Unmarshal.
+
+Introdução
+JSON (JavaScript Object Notation) é um formato simples de troca de dados. Sintacticamente assemelha-se aos objetos e listas de JavaScript. É mais comumente usado para comunicação entre back-ends da web e programas JavaScript em execução no navegador, mas é usado em muitos outros lugares também. Sua home page, json.org, fornece uma definição clara e concisa do padrão.
+
+Com o pacote json , é muito fácil ler e gravar dados JSON de seus programas Go.
+
+Json marechal codificar
+Marshal retorna a codificação JSON de v .
+
+Marshal percorre o valor v recursivamente. Se um valor encontrado implementar a interface Marshaler e não for um ponteiro nulo, Marshal chama seu método MarshalJSON para produzir JSON. Se nenhum método MarshalJSON estiver presente, mas o valor implementar encoding.TextMarshaler, Marshal chama seu método MarshalText e codifica o resultado como uma string JSON.
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type ApiLogin struct {
+	Name string `json:"name"`
+	Cpf  string `json:"cpf"`
+}
+
+func main() {
+
+	a := ApiLogin{"Jefferson", "033.343.434-89"}
+	fmt.Println(a)
+
+	m, err := json.Marshal(a)
+	if err != nil {
+		log.Println(err)
+	}
+	// show bytes
+	fmt.Println(m)
+
+	// show string json
+	fmt.Println(string(m))
+}
+
+
+Json MarshalIndent
+MarshalIndent é como Marshal, mas aplica o recuo para formatar a saída. Cada elemento JSON na saída começará em uma nova linha que começa com prefixo seguido por uma ou mais cópias de recuo de acordo com o aninhamento de recuo.
+
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type ApiLogin struct {
+	Name string `json:"name"`
+	Cpf  string `json:"cpf"`
+}
+
+func main() {
+
+	a := ApiLogin{"Jefferson", "033.343.434-89"}
+	// improving output for json format viewing
+	json, err := json.MarshalIndent(a, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(json))
+}
+
+
+Opção Omitempty
+A opção "omitempty" especifica que o campo deve ser omitido da codificação se o campo tiver um valor vazio, definido como falso, 0, um ponteiro nulo, um valor de interface nulo e qualquer matriz, fatia, mapa ou cadeia vazia.
+
+O pacote json acessa apenas os campos exportados de tipos de struct (aqueles que começam com uma letra maiúscula). Portanto, somente os campos exportados de uma estrutura estarão presentes na saída JSON.
+
+Neste exemplo, trabalhamos com ponteiros para referenciar a estrutura dentro de outra estrutura, e outro ponto é que declaramos a estrutura dentro da própria estrutura. Com isso, temos maneiras diferentes de inicializar e preencher os campos de nossas estruturas. Vamos ver como isso funciona? Confira o exemplo abaixo.
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Login struct {
+	// Field appears in JSON as key "login".
+	Login string `json:"login"`
+
+	// Field appears in JSON as key "email" and
+	// the field is omitted from the object if its value is empty,
+	// as defined above.
+	Email string `json:"email,omitempty"`
+
+	// Field appears in JSON as key "nick" (the default), but
+	// the field is skipped if empty.
+	// Note the leading comma.
+	Nick string `json:",omitempty"`
+
+	// Field is ignored by this package.
+	Level int `json:"-"`
+
+	// Field appears in JSON as key "-".
+	LastEmail string `json:"-,"`
+}
+
+func main() {
+
+	l := Login{Login: "Austin", Email: "austin@go.com", Nick: 
+	 "", Level: 1000, LastEmail: "austin@gmail.com"}
+	fmt.Println(l)
+
+	m, err := json.Marshal(l)
+	if err != nil {
+		log.Println(err)
+	}
+
+	fmt.Println(string(m))
+}
+
+
+Json NewDecoder
+
+json.NewEncoder(r.Body).Encode(&d)
+
+
+Interface vazia
+
+A interface{} (interface vazia) descreve uma interface com métodos zero. Cada tipo Go implementa pelo menos zero métodos e, portanto, satisfaz a interface vazia.
+
+A interface vazia serve como um tipo de contêiner geral:
+
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	var i interface{}
+
+	i = "DevOps BH"
+	i = 2019
+	i = 9.5
+
+	r := i.(float64)
+	fmt.Println("Area do circulo: ", math.Pi*r*r)
+
+	switch v := i.(type) {
+	case int:
+		fmt.Println("Int * 2=", v*2)
+	case float64:
+		fmt.Println("Float64/2=", v/2)
+	case string:
+		h := len(v) / 2
+		fmt.Println("Quantidade/2 -> v[h:] + v[:h]=", v[h:]+v[:h])
+	default:
+		// i isn't one of the types above
+	}
+}
+
+
+
+
+
+

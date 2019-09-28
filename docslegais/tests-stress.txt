@@ -1,0 +1,39 @@
+
+------------------------------------------------------------------------------------------------------------
+Test stress
+------------------------------------------------------------------------------------------------------------
+
+for ((i=1;i<=100000000;i++)); do curl -X POST "localhost:8081/produto/ping"; done
+
+i=1;while [ $i -le 1000 ]; do i=$(( $i+1 )); curl -X POST "localhost:8081/produto/ping"; done
+
+------------------------------------------------------------------------------------------------------------
+
+wrk -t2 -c100 -d10s -R1000 http://localhost:8081/produto/ping
+
+wrk -t2 -c10000 -d10s -R1000 -H "Authorization: Basic KEY_1:KEY_2" -L http://localhost:8081/produto/ping
+
+------------------------------------------------------------------------------------------------------------
+
+ab -n 50000 -c 2000  -k -H "Accept-Encoding: gzip, deflate" "http://localhost:8081/produto/ping"
+
+ab -n 500000 -c 2000 -t 60s -v -k -H "Authorization: Basic KEY_1:KEY_2" "http://localhost:8081/produto/ping"
+
+
+------------------------------------------------------------------------------------------------------------
+cat urls-test-stress.txt | parallel 'ab -n 500000 -c 2000 -t 60s -v -k {}'
+------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------
+Hey
+------------------------------------------------------------------------------------------------------------
+https://github.com/rakyll/hey
+go get -u github.com/rakyll/hey
+
+hey -n 10000 -c 200 http://localhost:8081/produto/ping
+hey -n 10000 -c 200 -m POST -T "application/x-www-form-urlencoded" -d 'username=1&message=hello' http://localhost:8081/produto/ping
+hey -n 10000 -c 200 -m POST -T "application/x-www-form-urlencoded" -D json/produto.json http://localhost:8081/produto/ping
+ hey -n 10000 -c 200 -m POST -T "application/x-www-form-urlencoded" -D json/produto.json http://localhost:8081/produto/pinglogrus
+
+go run main.go &> /tmp/api.log
