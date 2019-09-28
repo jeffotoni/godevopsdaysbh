@@ -1,5 +1,9 @@
 
 
+https://goworkshop.s3wf.com
+
+$ git clone https://github.com/jeffotoni/godevopsdasybh.git
+
 Editores
 
 - vim-go
@@ -7,19 +11,21 @@ Editores
 - Vscode
 - Ou o seu de preferência
 
-Clients rEST
-
- - curl
- - Postman
- - insomnia
-
- Utilitarios
+Utilitarios
 
   - docker
   - postgres
   - nmap
   - netstat -tunlp
   - netstat -lputa
+
+Clients rEST
+
+ - curl
+ - Postman
+ - insomnia
+
+
 
 
 
