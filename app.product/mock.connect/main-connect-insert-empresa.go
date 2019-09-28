@@ -2,7 +2,7 @@ package main
 
 import (
   "fmt"
-  "github.com/github.com/jeffotoni/codenation.dev/modulo3/postgres/repo/rpg"
+  "github.com/jeffotoni/godevopsdasybh/app.product/repo/rpg"
 )
 
 func main() {

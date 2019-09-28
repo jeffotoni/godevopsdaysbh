@@ -3,7 +3,6 @@ package rpg
 import (
 	"database/sql"
 	"fmt"
-	//"github.com/github.com/jeffotoni/codenation.dev/modulo3/postgres/pkg/pg"
 )
 
 func Select2(Db *sql.DB, codemp int64) (ok bool, msg string) {

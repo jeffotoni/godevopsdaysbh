@@ -5,9 +5,8 @@
 package rpg
 
 import (
-	"database/sql"
-	"github.com/github.com/jeffotoni/codenation.dev/modulo3/postgres/pkg/pg"
-	//"log"
+	"fmt"
+	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/pg"
 )
 
 func Insert(cnpj, razaosocial string, ativo bool) (ok bool, msg string) {
@@ -23,14 +22,10 @@ func Insert(cnpj, razaosocial string, ativo bool) (ok bool, msg string) {
 		return ok, "campo razaosocial obrigatorio"
 	}
 
-	// connect
-	var Db = pg.PostDb.Pgdb
-
-	// Db...
-	if interf := pg.Connect(); interf != nil {
-		Db = interf.(*sql.DB)
-	} else {
-		return ok, "Error ao conectar na base de dados!"
+	Db, errc := pg.Connect1()
+	if errc != nil {
+		fmt.Println("banco: ", errc)
+		return false, errc.Error()
 	}
 
 	insert := `INSERT INTO empresa(cnpj,razaosocial,ativo)values($1,$2,$3)`

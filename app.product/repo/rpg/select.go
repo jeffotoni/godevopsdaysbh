@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	//"time"
-	"github.com/github.com/jeffotoni/codenation.dev/modulo3/postgres/pkg/pg"
+	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/pg"
 )
 
 func Select(codemp int64) (ok bool, msg string) {

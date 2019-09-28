@@ -7,7 +7,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"github.com/github.com/jeffotoni/codenation.dev/modulo3/postgres/repo/rpg"
+	"github.com/jeffotoni/godevopsdasybh/app.product/repo/rpg"
 	"os"
 )
 
