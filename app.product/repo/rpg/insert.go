@@ -6,7 +6,7 @@ package rpg
 
 import (
 	"fmt"
-	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/pg"
+	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/psql"
 )
 
 func Insert(cnpj, razaosocial string, ativo bool) (ok bool, msg string) {

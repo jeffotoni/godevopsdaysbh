@@ -9,7 +9,7 @@ import (
 
 	mlogin "github.com/jeffotoni/godevopsdasybh/app.product/models/login"
 	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/crypt"
-	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/pg"
+	"github.com/jeffotoni/godevopsdasybh/app.product/pkg/psql"
 )
 
 func ValideGetLogin(email, password string) (bool, *mlogin.GetLoginData, int) {
