@@ -12,9 +12,9 @@
 
 CREATE TABLE public.login (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    password text NOT NULL,
-    email text NOT NULL,
-    name text NOT NULL,
+    password varchar(100) NOT NULL,
+    email varchar(200) UNIQUE NOT NULL,
+    name varchar(100) NOT NULL,
     created_at timestamp without time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
     CONSTRAINT "login_pkey" PRIMARY KEY (id),
     CONSTRAINT id UNIQUE (id) 

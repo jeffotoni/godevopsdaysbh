@@ -23,6 +23,9 @@ loginemail:
 loginconnect:
 	go run main-connect-login.go
 
+loginconnect2:
+	go run main-connect-login2.go
+
 empresaconnect:
 	go run main-connect-empresa.go
 

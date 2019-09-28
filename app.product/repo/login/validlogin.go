@@ -5,6 +5,7 @@
 package repol
 
 import (
+	"log"
 	"strings"
 
 	mlogin "github.com/jeffotoni/godevopsdasybh/app.product/models/login"
@@ -20,7 +21,7 @@ func ValideGetLogin(email, password string) (bool, *mlogin.GetLoginData, int) {
 	email = strings.ToLower(email)
 	row := Db.QueryRow(`SELECT logi_senha,logi_id,logi_uuid,logi_nome,logi_last_name,
 		logi_avatar_dominio,logi_data_criacao::text,logi_avatar_type 
-		FROM public.user WHERE lower(logi_email)=$1`, email)
+		FROM public.login2 WHERE lower(logi_email)=$1`, email)
 
 	var logi_id int64
 	var logi_uuid string // required
@@ -34,6 +35,7 @@ func ValideGetLogin(email, password string) (bool, *mlogin.GetLoginData, int) {
 	gl := mlogin.GetLoginData{}
 
 	if errqy != nil {
+		log.Println("aqui no")
 		// logrus.WithFields(logrus.Filelds{
 		// 	"version": "1.0.0",
 		// 	"host":    "goworkshop.s3wf.com",

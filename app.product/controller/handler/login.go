@@ -145,7 +145,7 @@ func SignInJson(w http.ResponseWriter, r *http.Request) {
 				"method":  "Marshal",
 			}).Error(err.Error())
 
-			jsonstr := util.BuildJSON(`{"status":"error","message":"`, err.Error(), `"}`)
+			jsonstr := util.Concat(`{"status":"error","message":"`, err.Error(), `"}`)
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(jsonstr))
 			return
